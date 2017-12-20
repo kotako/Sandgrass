@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Contributions from '../Contributions';
 import Tweets from '../Tweets';
+import ContributionContainer from '../../containers/ContributionContainer';
 import TimerContainer from '../../containers/TimerContainer';
 
 const Wrapper = styled.div`
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 const Board = () => (
   <Wrapper>
-    <Contributions />
+    <ContributionContainer />
     <TimerContainer />
     <Tweets />
   </Wrapper>

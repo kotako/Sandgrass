@@ -31,7 +31,7 @@ class TimerContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {state: {...state}};
+  return {state: state};
 };
 
 export default connect(mapStateToProps)(TimerContainer);

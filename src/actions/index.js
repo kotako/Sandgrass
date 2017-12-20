@@ -26,3 +26,10 @@ export const none = () => {
 export const init = () => {
   return { type: 'TIMER_INIT' }
 }
+
+// ContributionsContainer
+export const fetchContributions = () => {
+  return {
+    type: 'CONTRIBUTIONS_FETCHED'
+  }
+}

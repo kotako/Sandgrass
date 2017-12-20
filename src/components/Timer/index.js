@@ -6,10 +6,12 @@ import { Button } from 'semantic-ui-react';
 
 const TimerWrapper = styled.div`
   text-align: center;
+  display: inline-block;
+  margin: 1.6em;
 `
 
 const Dial = styled.h1`
-  font-size: 5.5em;
+  font-size: 6.4em;
 `
 
 const Timer = ({remain, counting, onClick}) => (

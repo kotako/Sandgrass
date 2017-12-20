@@ -1,9 +1,9 @@
 import React from 'react';
-import TimerContainer from '../../containers/TimerContainer';
+import Board from '../Board';
 
 const App = () => (
   <div>
-    <TimerContainer />
+    <Board />
   </div>
 );
 

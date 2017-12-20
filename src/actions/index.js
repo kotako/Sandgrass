@@ -27,9 +27,16 @@ export const init = () => {
   return { type: 'TIMER_INIT' }
 }
 
-// ContributionsContainer
+// Contributions Container
 export const fetchContributions = () => {
   return {
     type: 'CONTRIBUTIONS_FETCHED'
+  }
+}
+
+// Tweets container
+export const fetchTweets = () => {
+  return {
+    type: 'TWEETS_FETCHED'
   }
 }

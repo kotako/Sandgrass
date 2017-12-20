@@ -1,8 +1,8 @@
 export const timerAction = (counting) => {
   return dispatch => {
     counting
-      ? dispatch(start())
-      : dispatch(stop())
+      ? dispatch(tick())
+      : dispatch(none())
   };
 }
 
@@ -10,11 +10,11 @@ export const timerSwitch = () => {
   return { type: 'TIMER_BUTTON_SWITCH' }
 }
 
-export const start = () => {
-  return { type: 'TIMER_START' }
+export const tick = () => {
+  return { type: 'TIMER_TICK' }
 }
 
-export const stop = () => {
+export const none = () => {
   return { type: 'default' }
 }
 

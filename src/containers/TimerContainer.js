@@ -22,12 +22,10 @@ class TimerContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <Timer
-          counting={this.props.state.timer.counting}
-          remain={this.props.state.timer.remain}
-          onClick={() => this.props.dispatch(timerSwitch())}/>
-      </div>
+      <Timer
+        counting={this.props.state.timer.counting}
+        remain={this.props.state.timer.remain}
+        onClick={() => this.props.dispatch(timerSwitch())}/>
     );
   }
 }

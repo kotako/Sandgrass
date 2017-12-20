@@ -1,3 +1,5 @@
+import Moment from 'moment';
+
 export const timerAction = (counting) => {
   return dispatch => {
     counting
@@ -7,7 +9,10 @@ export const timerAction = (counting) => {
 }
 
 export const timerSwitch = () => {
-  return { type: 'TIMER_BUTTON_SWITCH' }
+  return {
+    type: 'TIMER_BUTTON_SWITCH',
+    now: Moment().unix()
+  }
 }
 
 export const tick = () => {

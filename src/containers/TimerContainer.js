@@ -1,20 +1,39 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { timerButtonAction } from '../actions'
+import { timerAction, timerSwitch, init } from '../actions'
 
-const mapStateToProps = state => (
-  state.timer
-);
+class TimerContainer extends React.Component {
 
-const mapDispatchToProps = dispatch => (
-  {onClick: () => (
-      dispatch(timerButtonAction())
-  )}
-)
+  componentWillMount() {
+    this.props.dispatch(init())
+  }
 
-const TimerContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Timer)
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.props.dispatch(timerAction(this.props.state.timer.counting)) },
+      1000
+    );
+  }
 
-export default TimerContainer;
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div>
+        <Timer
+          counting={this.props.state.timer.counting}
+          remain={this.props.state.timer.remain}
+          onClick={() => this.props.dispatch(timerSwitch())}/>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {state: {...state}};
+};
+
+export default connect(mapStateToProps)(TimerContainer);

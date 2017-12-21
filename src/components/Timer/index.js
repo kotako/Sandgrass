@@ -14,13 +14,16 @@ const Dial = styled.h1`
   font-size: 6.4em;
 `
 
-const Timer = ({remain, counting, onClick}) => (
+const Timer = ({remain, counting, onClick, onResetClick}) => (
   <TimerWrapper>
     <Dial>
       {moment.unix(remain).format('mm:ss')}
     </Dial>
     <Button color={counting ? 'red' : 'blue'} onClick={onClick}>
       {counting ? 'Stop' : 'Start'}
+    </Button>
+    <Button color='yellow' onClick={onResetClick}>
+      Reset
     </Button>
   </TimerWrapper>
 );

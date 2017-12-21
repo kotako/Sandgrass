@@ -11,7 +11,9 @@ class TimerContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      this.props.dispatch(timerAction(this.props.state.timer.counting)) },
+      (this.props.state.timer.remain >= 0)
+        ? this.props.dispatch(timerAction(this.props.state.timer.counting))
+        : this.props.dispatch(timerAction(!this.props.state.timer.counting))},
       1000
     );
   }
@@ -25,7 +27,8 @@ class TimerContainer extends React.Component {
       <Timer
         counting={this.props.state.timer.counting}
         remain={this.props.state.timer.remain}
-        onClick={() => this.props.dispatch(timerSwitch())}/>
+        onClick={() => this.props.dispatch(timerSwitch())}
+        onResetClick={() => this.props.dispatch(init())}/>
     );
   }
 }

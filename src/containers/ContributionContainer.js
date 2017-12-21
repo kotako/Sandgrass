@@ -20,6 +20,7 @@ const Statement = styled.h1`
 class ContributionContainer extends React.Component {
 
   componentDidMount() {
+    this.props.dispatch(fetchContributions());
     this.interval = setInterval(() => {
       this.props.dispatch(fetchContributions()) },
       180000

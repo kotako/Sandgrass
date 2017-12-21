@@ -28,19 +28,21 @@ export const init = () => {
 }
 
 // Contributions Container
-export function fetchContributions(){
+export function fetchContributions(start){
   return dispatch => {
     return fetch('https://api.github.com/users/Takorras/events')
       .then(response => response.json())
+      .then(json => json.filter((element, index, array) => {
+        return (Moment(element.created_at).unix() > start);
+      }))
       .then(json => dispatch(receiveJson(json)))
   }
 }
 
 export const receiveJson = (json) => {
-  console.log(json);
   return {
-    type: 'CONTRIBUTIONS_FETCHED',
-    json: json
+    type: 'CONTRIBUTIONS_WITHIN_WORK_TIME',
+    json: json,
   }
 }
 

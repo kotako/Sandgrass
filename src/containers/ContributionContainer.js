@@ -20,10 +20,11 @@ const Statement = styled.h1`
 class ContributionContainer extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchContributions());
     this.interval = setInterval(() => {
-      this.props.dispatch(fetchContributions()) },
-      180000
+      if (this.props.state.timer.counting) {
+        this.props.dispatch(fetchContributions(this.props.state.timer.start))
+      }},
+      60000
     );
   }
 
@@ -34,7 +35,7 @@ class ContributionContainer extends React.Component {
   render() {
     return (
       <ContributionsWrapper>
-        <Figure>{this.props.state.contribution ? this.props.state.contribution.commits : 0}</Figure>
+        <Figure>{this.props.state.contributions.commits ? this.props.state.contributions.commits : 0}</Figure>
         <Statement>Contributions</Statement>
       </ContributionsWrapper>
     )

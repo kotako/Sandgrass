@@ -35,8 +35,21 @@ export function fetchContributions(start){
       .then(json => json.filter((element, index, array) => {
         return (Moment(element.created_at).unix() > start);
       }))
+      .then(json => gitEventsExtractor(json))
       .then(json => dispatch(receiveJson(json)))
   }
+}
+
+const gitEventsExtractor = (json) => {
+  return [].concat.apply([],
+    json
+      .filter((element, index, array) => {
+        return (element.type === 'PushEvent');
+      })
+      .map((element, index, array) => {
+        return element.payload;
+      })
+    );
 }
 
 export const receiveJson = (json) => {

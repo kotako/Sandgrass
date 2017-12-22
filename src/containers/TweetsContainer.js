@@ -1,20 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Statistic, Image } from 'semantic-ui-react';
 import { fetchTweets } from '../actions';
+import TwitterIcon from '../assets/twitter.png';
 
 const TweetsWrapper = styled.div`
   text-align: center;
   display: inline-block;
   margin: 1.6em;
-`
-
-const Figure = styled.h1`
-  font-size: 6.4em;
-`
-
-const Statement = styled.h1`
-  font-size: 2.4em;
 `
 
 class TweetsContainer extends React.Component {
@@ -33,8 +27,13 @@ class TweetsContainer extends React.Component {
   render() {
     return (
       <TweetsWrapper>
-        <Figure>{this.props.tweets ? this.props.tweets : 0}</Figure>
-        <Statement>Tweets</Statement>
+        <Statistic>
+          <Statistic.Value>
+            <Image src={TwitterIcon} className='inline'/>
+            {this.props.tweets ? this.props.tweets : 0}
+          </Statistic.Value>
+          <Statistic.Label>Tweets</Statistic.Label>
+        </Statistic>
       </TweetsWrapper>
     );
   }

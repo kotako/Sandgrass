@@ -2,19 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { fetchContributions } from '../actions';
+import { Statistic, Image } from 'semantic-ui-react';
+import GitHubIcon from '../assets/GitHub-Mark-120px-plus.png';
 
 const ContributionsWrapper = styled.div`
   text-align: center;
   display: inline-block;
   margin: 1.6em;
-`
-
-const Figure = styled.h1`
-  font-size: 6.4em;
-`
-
-const Statement = styled.h1`
-  font-size: 2.4em;
 `
 
 class ContributionContainer extends React.Component {
@@ -35,8 +29,13 @@ class ContributionContainer extends React.Component {
   render() {
     return (
       <ContributionsWrapper>
-        <Figure>{this.props.state.contributions.commits ? this.props.state.contributions.commits : 0}</Figure>
-        <Statement>Contributions</Statement>
+        <Statistic>
+          <Statistic.Value>
+            <Image src={GitHubIcon} className='inline'/>
+            {this.props.state.contributions.commits ? this.props.state.contributions.commits : 0}
+          </Statistic.Value>
+          <Statistic.Label>Contributions</Statistic.Label>
+        </Statistic>
       </ContributionsWrapper>
     )
   }

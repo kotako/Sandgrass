@@ -6,7 +6,7 @@ const timer = (state = {}, action) => {
         : {...state, counting: !state.counring, start: action.now}
     case 'TIMER_TICK':
       return {...state, remain: state.remain-1};
-    case 'TIMER_INIT':
+    case 'INIT':
       return {...state, counting: false, remain: 1500 };
     default:
       return state;

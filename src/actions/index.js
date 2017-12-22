@@ -24,7 +24,7 @@ export const none = () => {
 }
 
 export const init = () => {
-  return { type: 'TIMER_INIT' }
+  return { type: 'INIT' }
 }
 
 // Contributions Container

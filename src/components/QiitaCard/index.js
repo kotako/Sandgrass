@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Card, Feed } from 'semantic-ui-react';
+import { Card, Feed, Label } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
   margin: 1.6em;
@@ -9,10 +9,12 @@ const Wrapper = styled.div`
 const Issue = ({issue}) => (
   <Feed.Content>
     <Feed.Summary>
-      <a>{issue ? issue.title : ''}</a>
+      <a href={issue ? issue.url : ''} target='_blank'>{issue ? issue.title : ''}</a>
     </Feed.Summary>
+    <Feed.Meta>
+    </Feed.Meta>
   </Feed.Content>
-)
+);
 
 const QiitaCard = ({issues}) => (
   <Wrapper>

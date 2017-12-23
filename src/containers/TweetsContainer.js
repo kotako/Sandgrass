@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Statistic, Image } from 'semantic-ui-react';
+import { Statistic, Image, Card, Segment } from 'semantic-ui-react';
 import { fetchTweets } from '../actions';
-import TwitterIcon from '../assets/twitter.png';
+import TwitterIcon from '../assets/twitterIcon.png';
 
 const TweetsWrapper = styled.div`
   text-align: center;
@@ -27,13 +27,17 @@ class TweetsContainer extends React.Component {
   render() {
     return (
       <TweetsWrapper>
-        <Statistic>
-          <Statistic.Value>
-            <Image src={TwitterIcon} className='inline'/>
-            {this.props.tweets ? this.props.tweets : 0}
-          </Statistic.Value>
-          <Statistic.Label>Tweets</Statistic.Label>
-        </Statistic>
+        <Card>
+          <Segment inverted color='blue' padded='false'>
+            <Image src={TwitterIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
+            <Statistic inverted>
+              <Statistic.Value>
+                {this.props.tweets ? this.props.tweets : 0}
+              </Statistic.Value>
+              <Statistic.Label>Tweets</Statistic.Label>
+            </Statistic>
+          </Segment>
+        </Card>
       </TweetsWrapper>
     );
   }

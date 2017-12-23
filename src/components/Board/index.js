@@ -11,8 +11,8 @@ const Wrapper = styled.div`
 
 const Board = () => (
   <Wrapper>
-    <ContributionContainer />
     <TimerContainer />
+    <ContributionContainer />
     <TweetsContainer/>
     <QiitaCardContainer />
   </Wrapper>

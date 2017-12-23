@@ -32,7 +32,7 @@ export function fetchContributions(start){
   return dispatch => {
     return fetch('https://api.github.com/users/Takorras/events')
       .then(response => response.json())
-      .then(json => json.isArray ? json : Promise.reject())
+      .then(json => json.isArray ? Promise.reject() : json)
       .then(json => json.filter((element, index, array) => {
         return (Moment(element.created_at).unix() > start);
       }))
@@ -48,7 +48,7 @@ const gitEventsExtractor = (json) => {
         return (element.type === 'PushEvent');
       })
       .map((element, index, array) => {
-        return element.payload;
+        return element.payload.commits;
       })
     );
 }
@@ -72,7 +72,7 @@ export const fetchQiitaIssues = () => {
   return dispatch => {
       return fetch('https://qiita.com/api/v2/items')
         .then(response => response.json())
-        .then(json => json.isArray ? json : Promise.reject())
+        .then(json => json.isArray ? Promise.reject() : json)
         .then(json => json.filter((element, index, array) => {
           return (index < 3)
         }))

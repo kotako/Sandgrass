@@ -20,7 +20,7 @@ const Timer = ({remain, counting, onClick, onResetClick}) => (
       {moment.unix(remain).format('mm:ss')}
     </Dial>
     <Button color={counting ? 'red' : 'blue'} onClick={onClick}>
-      {counting ? 'Stop' : 'Start'}
+      {counting ? 'Pause' : 'Start'}
     </Button>
     <Button color='yellow' onClick={onResetClick}>
       Reset

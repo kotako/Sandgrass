@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { timerAction, timerSwitch, init } from '../actions'
+import { timerSwitch, init, tick } from '../actions'
 
 class TimerContainer extends React.Component {
 
@@ -11,9 +11,11 @@ class TimerContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      (this.props.state.timer.remain >= 0)
-        ? this.props.dispatch(timerAction(this.props.state.timer.counting))
-        : this.props.dispatch(timerAction(!this.props.state.timer.counting))},
+      if ((this.props.state.timer.remain > 0) === this.props.state.timer.counting) {
+        this.props.dispatch(tick());
+      } else {
+        // 終了
+      }},
       1000
     );
   }

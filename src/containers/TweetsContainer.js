@@ -19,7 +19,7 @@ class TweetsContainer extends React.Component {
 
   render() {
     return (
-      <Segment inverted color='blue' padded='false' textAlign='center'>
+      <Segment inverted color='blue' textAlign='center'>
         <Image src={TwitterIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
         <Statistic inverted>
           <Statistic.Value>

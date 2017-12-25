@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Timer from '../components/Timer';
 import { timerSwitch, init, tick } from '../actions'
 
-class TimerContainer extends React.Component {
+class TimerBoard extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(init())
@@ -39,4 +39,4 @@ const mapStateToProps = state => {
   return {state: state};
 };
 
-export default connect(mapStateToProps)(TimerContainer);
+export default connect(mapStateToProps)(TimerBoard);

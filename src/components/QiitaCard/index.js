@@ -1,10 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Card, Feed, Label } from 'semantic-ui-react';
-
-const Wrapper = styled.div`
-  margin: 1.6em;
-`
+import { Card, Feed } from 'semantic-ui-react';
 
 const Issue = ({issue}) => (
   <Feed.Content>
@@ -17,7 +12,6 @@ const Issue = ({issue}) => (
 );
 
 const QiitaCard = ({issues}) => (
-  <Wrapper>
   <Card>
     <Card.Content>
       <Card.Header>
@@ -30,7 +24,6 @@ const QiitaCard = ({issues}) => (
       <Issue issue={issues ? issues[2] : null} />
     </Card.Content>
   </Card>
-  </Wrapper>
 )
 
 export default QiitaCard;

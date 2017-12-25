@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import TweetsContainer from '../../containers/TweetsContainer';
-import ContributionContainer from '../../containers/ContributionContainer';
+import { Grid } from 'semantic-ui-react';
 import TimerContainer from '../../containers/TimerContainer';
-import FlipsContainer from '../../containers/FlipsContainer';
+import ProgressBoard from '../ProgressBoard';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
 
 const Wrapper = styled.div`
-  text-align: center;
+  padding: 1.5em;
+  background-color: #2c3e50;
 `
 
 const Board = () => (
   <Wrapper>
-    <TimerContainer />
-    <ContributionContainer />
-    <TweetsContainer/>
-    <FlipsContainer/>
-    <QiitaCardContainer />
+    <Grid columns={2} padded>
+      <Grid.Row>
+        <Grid.Column>
+          <TimerContainer/>
+        </Grid.Column>
+        <Grid.Column width='5' floated='right'>
+          <ProgressBoard />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   </Wrapper>
 )
 

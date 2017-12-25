@@ -11,6 +11,7 @@ const TimerWrapper = styled.div`
 `
 
 const Dial = styled.h1`
+  color: #FFFFFF;
   font-size: 6.4em;
 `
 

@@ -1,7 +1,9 @@
 const contributions = (state = {}, action) => {
   switch (action.type) {
-    case 'CONTRIBUTIONS_WITHIN_WORK_TIME':
-      return {...state, commits: action.json.length};
+    case 'FETCH_COMMITS_SUCCESS':
+      return {...state, commits: action.commits};
+    case 'FETCH_LANGUAGES_SUCCESS':
+      return {...state, langs: action.langs};
     case 'INIT':
       return {...state, commits: 0};
     default:

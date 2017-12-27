@@ -1,4 +1,48 @@
 import Moment from 'moment';
+import { firebaseDB } from '../firebase';
+
+export const fetchUserData = () => {
+  return dispatch => {
+    const username = 'Takorras'
+    dispatch(postUserData());
+    firebaseDB.ref(`users/${username}`).once(
+      'value',
+      (snapshot) => {
+        console.log(snapshot.val())
+        dispatch(fetchSuccess())
+      },
+      (error) => {
+        console.log(error)
+        dispatch(fetchFailed())
+      }
+    )
+  };
+}
+
+export const postUserData = () => {
+  return dispatch => {
+    const username = 'Takorras';
+    firebaseDB.ref(`users/${username}`).push().set({
+      started_at: Moment().unix() - 15000,
+      finished_at: Moment().unix(),
+      commits: 3,
+      repos: 'Cider',
+      langs: 'kotlin'
+    })
+  }
+}
+
+export const fetchSuccess = () => {
+  return {
+    type: 'FETCH_USER_SUCCESS'
+  }
+}
+
+export const fetchFailed = () => {
+  return {
+    type: 'FETCH_FAILED'
+  }
+}
 
 export const timerSwitch = () => {
   return {

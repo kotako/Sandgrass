@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { timerSwitch, init, tick, adjustTimer, finish } from '../actions'
+import { timerSwitch, init, tick, adjustTimer, finish, fetchUserData } from '../actions'
 
 class TimerBoard extends React.Component {
 
@@ -10,6 +10,7 @@ class TimerBoard extends React.Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(fetchUserData())
     this.interval = setInterval(() => {
       // TODO: きれいにする
       if (this.props.state.timer.remain > 0) {

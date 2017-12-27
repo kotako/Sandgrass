@@ -8,7 +8,7 @@ export const timerSwitch = () => {
 }
 
 export const adjustTimer = (remain) => {
-  const times = [600, 1500, 3000];
+  const times = [10, 600, 1500, 3000];
   return {
     type: 'TIMER_ADJUSTED',
     remain: times[(times.indexOf(remain) + 1) % times.length]
@@ -21,4 +21,10 @@ export const tick = () => {
 
 export const init = () => {
   return { type: 'INIT' }
+}
+
+export const finish = () => {
+  return {
+    type: 'WORK_FINISHED'
+  }
 }

@@ -9,7 +9,10 @@ const timer = (state = {}, action) => {
     case 'TIMER_TICK':
       return {...state, remain: state.remain-1};
     case 'INIT':
-      return {...state, counting: false, remain: 1500, start: null };
+      return {...state, counting: false, remain: 1500, start: null, finished: false };
+    case 'WORK_FINISHED':
+      console.log('finished!!!');
+      return {...state, counting: false, remain: 0, finished: true};
     default:
       return state;
   }

@@ -25,6 +25,7 @@ export const init = () => {
 
 export const finish = () => {
   return {
-    type: 'WORK_FINISHED'
+    type: 'WORK_FINISHED',
+    now: Moment().unix()
   }
 }

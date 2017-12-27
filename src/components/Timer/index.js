@@ -13,12 +13,12 @@ const Dial = styled.h1`
   font-size: 8.8em;
 `
 
-const Timer = ({remain, counting, onStartClick, onResetClick, onAdjustClick}) => (
+const Timer = ({remain, counting, startedAt, onStartClick, onResetClick, onAdjustClick}) => (
   <TimerWrapper>
     <Dial>
       {moment.unix(remain).format('mm:ss')}
     </Dial>
-    <Button inverted color='orange' size='large' onClick={onAdjustClick} disabled={counting}>
+    <Button inverted color='orange' size='large' onClick={onAdjustClick} disabled={startedAt ? true : false}>
       <Icon name='wait'/>
       Adjust
     </Button>

@@ -16,15 +16,16 @@ export const fetchFlip = () => {
   };
 }
 
-export const postFlip = () => {
+export const postFlip = (startedAt, finishedAt, commits, repos, langs) => {
   return dispatch => {
     const username = 'Takorras';
     firebaseDB.ref(`users/${username}`).push().set({
-      started_at: Moment().unix() - 15000,
-      finished_at: Moment().unix(),
-      commits: 3,
-      repos: 'Cider',
-      langs: 'kotlin'
+      started_at: startedAt,
+      finished_at: finishedAt,
+      working_time: finishedAt - startedAt,
+      commits: commits ? commits : 0,
+      repos: repos ? repos : null,
+      langs: langs ? langs: null
     })
   }
 }

@@ -31,10 +31,10 @@ function fetchReposArray(urls) {
   })();
 }
 
-function getCommits(json, start) {
+function getCommits(json, startedAt) {
   const commits = [].concat.apply([], json
     .filter((element, index, array) => {
-      return ((Moment(element.created_at).unix() > start) && (element.type === 'PushEvent'));
+      return ((Moment(element.created_at).unix() > startedAt) && (element.type === 'PushEvent'));
     })
     .map((element, index, array) => {
       return element.payload.commits;
@@ -42,10 +42,10 @@ function getCommits(json, start) {
   return commits;
 }
 
-function getWorkingRepos(json, start) {
+function getWorkingRepos(json, startedAt) {
   const reposUrl = [].concat.apply([], json
     .filter((element, index, array) => {
-      return (Moment(element.created_at).unix() > start);
+      return (Moment(element.created_at).unix() > startedAt);
     })
     .map((element, index, array) => {
       return element.repo.url;

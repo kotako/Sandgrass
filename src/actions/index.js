@@ -1,4 +1,3 @@
-import Moment from 'moment';
 import { firebaseDB } from '../firebase';
 
 export const fetchFlip = () => {

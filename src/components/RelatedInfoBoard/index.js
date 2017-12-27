@@ -6,7 +6,6 @@ import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
 
 const Wrapper = styled.div`
   padding: 2.4em;
-  background-color: #F1F1F1;
 `
 
 const RelatedInfoBoard = () => (

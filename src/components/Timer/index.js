@@ -10,7 +10,7 @@ const TimerWrapper = styled.div`
 
 const Dial = styled.h1`
   color: #F1F1F1;
-  font-size: 8.8em;
+  font-size: 9.6em;
 `
 
 const Timer = ({remain, counting, startedAt, onStartClick, onResetClick, onAdjustClick}) => (
@@ -18,15 +18,15 @@ const Timer = ({remain, counting, startedAt, onStartClick, onResetClick, onAdjus
     <Dial>
       {moment.unix(remain).format('mm:ss')}
     </Dial>
-    <Button inverted color='orange' size='large' onClick={onAdjustClick} disabled={startedAt ? true : false}>
+    <Button inverted color='orange' size='huge' onClick={onAdjustClick} disabled={startedAt ? true : false}>
       <Icon name='wait'/>
       Adjust
     </Button>
-    <Button inverted color={counting ? 'red' : 'blue'} onClick={onStartClick} size='large'>
+    <Button inverted color={counting ? 'red' : 'blue'} onClick={onStartClick} size='huge'>
       <Icon name={counting ? 'pause' : 'play'}/>
       {counting ? 'Pause' : 'Start'}
     </Button>
-    <Button inverted color='yellow' onClick={onResetClick} size='large'>
+    <Button inverted color='yellow' onClick={onResetClick} size='huge'>
       <Icon name='refresh'/>
       Reset
     </Button>

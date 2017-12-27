@@ -1,24 +1,22 @@
 import Moment from 'moment';
 import { firebaseDB } from '../firebase';
 
-export const fetchUserData = () => {
+export const fetchFlip = () => {
   return dispatch => {
     const username = 'Takorras'
-    firebaseDB.ref(`users/${username}`).once(
+    firebaseDB.ref(`users/${username}`).on(
       'value',
       (snapshot) => {
-        console.log(snapshot.val())
-        dispatch(fetchSuccess(snapshot.val()));
+        dispatch(fetchFlipSuccess(snapshot.val()));
       },
       (error) => {
-        console.log(error)
-        dispatch(fetchFailed(error));
+        dispatch(fetchFlipFailed(error));
       }
     )
   };
 }
 
-export const postUserData = () => {
+export const postFlip = () => {
   return dispatch => {
     const username = 'Takorras';
     firebaseDB.ref(`users/${username}`).push().set({
@@ -31,44 +29,16 @@ export const postUserData = () => {
   }
 }
 
-export const fetchSuccess = (flips) => {
+export const fetchFlipSuccess = (flips) => {
   return {
-    type: 'FETCH_USER_SUCCESS',
+    type: 'FETCH_FLIP_SUCCESS',
     flips: flips
   }
 }
 
-export const fetchFailed = () => {
+export const fetchFlipFailed = (error) => {
   return {
-    type: 'FETCH_FAILED'
-  }
-}
-
-export const timerSwitch = () => {
-  return {
-    type: 'TIMER_BUTTON_SWITCH',
-    now: Moment().unix()
-  }
-}
-
-export const adjustTimer = (remain) => {
-  const times = [10, 600, 1500, 3000];
-  return {
-    type: 'TIMER_ADJUSTED',
-    remain: times[(times.indexOf(remain) + 1) % times.length]
-  }
-}
-
-export const tick = () => {
-  return { type: 'TIMER_TICK' }
-}
-
-export const init = () => {
-  return { type: 'INIT' }
-}
-
-export const finish = () => {
-  return {
-    type: 'WORK_FINISHED'
+    type: 'FETCH_FAILED',
+    error: error
   }
 }

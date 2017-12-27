@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import QiitaCard from '../components/QiitaCard';
-import { fetchQiitaIssues } from '../actions/qiitaAction.js';
+import { fetchQiitaIssues } from '../actions/qiita.js';
 
 class QiitaCardContainer extends React.Component {
 

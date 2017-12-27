@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { timerSwitch, init, tick, adjustTimer, finish, fetchUserData } from '../actions'
+import { switchOver, init, tick, adjust, finish } from '../actions/timer.js'
 
 class TimerBoard extends React.Component {
 
@@ -10,7 +10,6 @@ class TimerBoard extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchUserData())
     this.interval = setInterval(() => {
       // TODO: きれいにする
       if (this.props.state.timer.remain > 0) {
@@ -36,9 +35,9 @@ class TimerBoard extends React.Component {
       <Timer
         counting={this.props.state.timer.counting}
         remain={this.props.state.timer.remain}
-        onClick={() => this.props.dispatch(timerSwitch())}
+        onStartClick={() => this.props.dispatch(switchOver())}
         onResetClick={() => this.props.dispatch(init())}
-        onAdjustClick={() => this.props.dispatch(adjustTimer(this.props.state.timer.remain))}/>
+        onAdjustClick={() => this.props.dispatch(adjust(this.props.state.timer.remain))}/>
     );
   }
 }

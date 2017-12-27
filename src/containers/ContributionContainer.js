@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchContributions } from '../actions/contributionsAction.js';
-import { Statistic, Image, Segment } from 'semantic-ui-react';
-import GitHubIcon from '../assets/GitHub-Mark-Light-120px-plus.png';
+import { fetchContributions } from '../actions/contribution.js';
+import ContributionLabel from '../components/ContributionLabel';
 
 class ContributionContainer extends React.Component {
 
@@ -20,17 +19,7 @@ class ContributionContainer extends React.Component {
   }
 
   render() {
-    return (
-      <Segment inverted color='green' textAlign='center'>
-        <Image src={GitHubIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
-        <Statistic inverted>
-          <Statistic.Value>
-            {this.props.state.contributions.commits ? this.props.state.contributions.commits : 0}
-          </Statistic.Value>
-          <Statistic.Label>Contributions</Statistic.Label>
-        </Statistic>
-      </Segment>
-    )
+    return ( <ContributionLabel commits={this.props.state.contributions.commits}/>)
   }
 }
 

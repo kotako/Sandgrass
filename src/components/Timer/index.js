@@ -13,7 +13,7 @@ const Dial = styled.h1`
   font-size: 8.8em;
 `
 
-const Timer = ({remain, counting, onClick, onResetClick, onAdjustClick}) => (
+const Timer = ({remain, counting, onStartClick, onResetClick, onAdjustClick}) => (
   <TimerWrapper>
     <Dial>
       {moment.unix(remain).format('mm:ss')}
@@ -22,7 +22,7 @@ const Timer = ({remain, counting, onClick, onResetClick, onAdjustClick}) => (
       <Icon name='wait'/>
       Adjust
     </Button>
-    <Button inverted color={counting ? 'red' : 'blue'} onClick={onClick} size='large'>
+    <Button inverted color={counting ? 'red' : 'blue'} onClick={onStartClick} size='large'>
       <Icon name={counting ? 'pause' : 'play'}/>
       {counting ? 'Pause' : 'Start'}
     </Button>
@@ -38,7 +38,7 @@ Timer.propstype = {
   end: PropTypes.number,
   remain: PropTypes.number,
   counting: PropTypes.bool,
-  onClick: PropTypes.func,
+  onStartClick: PropTypes.func,
   onResetClick: PropTypes.func,
   onAdjustClick: PropTypes.func,
 }

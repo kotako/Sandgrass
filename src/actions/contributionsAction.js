@@ -66,7 +66,6 @@ function getWorkingLanguages(repos) {
       return (array.indexOf(element) === index);
     })
   );
-  console.log(langs);
   return langs;
 }
 

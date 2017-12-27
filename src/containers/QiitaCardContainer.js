@@ -8,7 +8,7 @@ class QiitaCardContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchQiitaIssues());
     this.interval = setInterval(() => {
-      this.props.dispatch(fetchQiitaIssues())
+      this.props.dispatch(fetchQiitaIssues(this.props.state.contributions.langs));
     },
       300000
     );

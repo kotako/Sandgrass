@@ -10,7 +10,7 @@ export const fetchQiitaIssues = (langs) => {
 
     const issues = query
       ? await fetchJson(`https://qiita.com/api/v2/items?per_page=3&query=${query}`)
-      : await fetchJson('https://qiita.com/api/v2/items')
+      : await fetchJson('https://qiita.com/api/v2/items?per_page=3')
     dispatch(receiveQiitaIssues(issues));
   }
 }

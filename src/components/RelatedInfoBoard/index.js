@@ -2,15 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { Card } from 'semantic-ui-react';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
+import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
 
 const Wrapper = styled.div`
   padding: 2.4em;
+  background-color: #F1F1F1;
 `
 
 const RelatedInfoBoard = () => (
   <Wrapper>
-    <Card.Group>
+    <Card.Group itemsPerRow={2}>
       <QiitaCardContainer/>
+      <AnalyzerCardContainer/>
     </Card.Group>
   </Wrapper>
 );

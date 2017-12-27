@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 const TimerWrapper = styled.div`
   text-align: center;
@@ -13,15 +13,21 @@ const Dial = styled.h1`
   font-size: 8.8em;
 `
 
-const Timer = ({remain, counting, onClick, onResetClick}) => (
+const Timer = ({remain, counting, onClick, onResetClick, onAdjustClick}) => (
   <TimerWrapper>
     <Dial>
       {moment.unix(remain).format('mm:ss')}
     </Dial>
-    <Button color={counting ? 'red' : 'blue'} onClick={onClick}>
+    <Button inverted color='orange' size='large' onClick={onAdjustClick}>
+      <Icon name='wait'/>
+      Adjust
+    </Button>
+    <Button inverted color={counting ? 'red' : 'blue'} onClick={onClick} size='large'>
+      <Icon name={counting ? 'pause' : 'play'}/>
       {counting ? 'Pause' : 'Start'}
     </Button>
-    <Button color='yellow' onClick={onResetClick}>
+    <Button inverted color='yellow' onClick={onResetClick} size='large'>
+      <Icon name='refresh'/>
       Reset
     </Button>
   </TimerWrapper>
@@ -33,6 +39,8 @@ Timer.propstype = {
   remain: PropTypes.number,
   counting: PropTypes.bool,
   onClick: PropTypes.func,
+  onResetClick: PropTypes.func,
+  onAdjustClick: PropTypes.func,
 }
 
 export default Timer;

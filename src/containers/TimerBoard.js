@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { timerSwitch, init, tick } from '../actions'
+import { timerSwitch, init, tick, adjustTimer } from '../actions'
 
 class TimerBoard extends React.Component {
 
@@ -30,7 +30,8 @@ class TimerBoard extends React.Component {
         counting={this.props.state.timer.counting}
         remain={this.props.state.timer.remain}
         onClick={() => this.props.dispatch(timerSwitch())}
-        onResetClick={() => this.props.dispatch(init())}/>
+        onResetClick={() => this.props.dispatch(init())}
+        onAdjustClick={() => this.props.dispatch(adjustTimer(this.props.state.timer.remain))}/>
     );
   }
 }

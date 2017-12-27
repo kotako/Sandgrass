@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import ContributionContainer from '../../containers/ContributionContainer';
 import FlipsContainer from '../../containers/FlipsContainer';
-import TweetsContainer from '../../containers/TweetsContainer';
 
 const ProgressBoard = () => (
   <Grid columns={2}>
@@ -15,10 +14,9 @@ const ProgressBoard = () => (
     </Grid.Row>
     <Grid.Row>
       <Grid.Column>
-        <ContributionContainer />
       </Grid.Column>
       <Grid.Column>
-        <TweetsContainer />
+        <ContributionContainer />
       </Grid.Column>
     </Grid.Row>
   </Grid>

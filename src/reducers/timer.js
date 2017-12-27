@@ -4,6 +4,8 @@ const timer = (state = {}, action) => {
       return state.start
         ? {...state, counting: !state.counting}
         : {...state, counting: !state.counting, start: action.now}
+    case 'TIMER_ADJUSTED':
+      return {...state, remain: action.remain}
     case 'TIMER_TICK':
       return {...state, remain: state.remain-1};
     case 'INIT':

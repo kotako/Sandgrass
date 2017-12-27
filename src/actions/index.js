@@ -7,17 +7,18 @@ export const timerSwitch = () => {
   }
 }
 
+export const adjustTimer = (remain) => {
+  const times = [600, 1500, 3000];
+  return {
+    type: 'TIMER_ADJUSTED',
+    remain: times[(times.indexOf(remain) + 1) % times.length]
+  }
+}
+
 export const tick = () => {
   return { type: 'TIMER_TICK' }
 }
 
 export const init = () => {
   return { type: 'INIT' }
-}
-
-// Tweets container
-export const fetchTweets = () => {
-  return {
-    type: 'TWEETS_FETCHED'
-  }
 }

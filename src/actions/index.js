@@ -4,16 +4,15 @@ import { firebaseDB } from '../firebase';
 export const fetchUserData = () => {
   return dispatch => {
     const username = 'Takorras'
-    dispatch(postUserData());
     firebaseDB.ref(`users/${username}`).once(
       'value',
       (snapshot) => {
         console.log(snapshot.val())
-        dispatch(fetchSuccess())
+        dispatch(fetchSuccess(snapshot.val()));
       },
       (error) => {
         console.log(error)
-        dispatch(fetchFailed())
+        dispatch(fetchFailed(error));
       }
     )
   };
@@ -32,9 +31,10 @@ export const postUserData = () => {
   }
 }
 
-export const fetchSuccess = () => {
+export const fetchSuccess = (flips) => {
   return {
-    type: 'FETCH_USER_SUCCESS'
+    type: 'FETCH_USER_SUCCESS',
+    flips: flips
   }
 }
 

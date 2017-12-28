@@ -4,7 +4,7 @@ import Timer from '../components/Timer';
 import { switchOver, init, tick, adjust, finish } from '../actions/timer.js'
 import { postFlip } from '../actions';
 
-class TimerBoard extends React.Component {
+class TimerContainer extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(init())
@@ -13,7 +13,7 @@ class TimerBoard extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       // TODO: きれいにする
-      if (this.props.state.timer.remain > 0) {
+      if (this.props.state.timer.remain > 1) {
         if (this.props.state.timer.counting) {
           this.props.dispatch(tick());
         }
@@ -21,6 +21,7 @@ class TimerBoard extends React.Component {
         if (this.props.state.timer.counting) {
           this.props.dispatch(finish(this.props.state));
           this.props.dispatch(postFlip(
+            this.props.state.user.name,
             this.props.state.timer.startedAt,
             this.props.state.timer.finishedAt,
             this.props.state.contributions.commits,
@@ -55,4 +56,4 @@ const mapStateToProps = state => {
   return {state: state};
 };
 
-export default connect(mapStateToProps)(TimerBoard);
+export default connect(mapStateToProps)(TimerContainer);

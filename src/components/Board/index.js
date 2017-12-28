@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
-import TimerBoard from '../../containers/TimerBoard';
+import TimerContainer from '../../containers/TimerContainer';
 import ProgressBoard from '../ProgressBoard';
 
 const Wrapper = styled.div`
@@ -14,7 +14,7 @@ const Board = () => (
     <Grid columns={2}>
       <Grid.Row>
         <Grid.Column>
-          <TimerBoard/>
+          <TimerContainer/>
         </Grid.Column>
         <Grid.Column widescreen='8' largeScreen='8' computer='7' tablet='15' mobile='16' floated='right'>
           <ProgressBoard />

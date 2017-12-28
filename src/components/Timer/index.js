@@ -18,7 +18,7 @@ const Timer = ({remain, counting, startedAt, onStartClick, onResetClick, onAdjus
     <Dial>
       {moment.unix(remain).format('mm:ss')}
     </Dial>
-    <Button inverted color='orange' size='huge' onClick={onAdjustClick} disabled={startedAt ? true : false}>
+    <Button inverted color='orange' onClick={onAdjustClick} size='huge' disabled={startedAt ? true : false}>
       <Icon name='wait'/>
       Adjust
     </Button>

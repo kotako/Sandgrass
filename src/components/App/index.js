@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Board from '../Board';
 import RelatedInfoBoard from '../RelatedInfoBoard';
 import HeaderMenu from '../HeaderMenu';
-import { fetchFlip } from '../../actions';
+import { authWithGitHub } from '../../actions';
 
 const Wrapper = styled.div`
   background-color: #F1F1F1;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchFlip());
+    this.props.dispatch(authWithGitHub())
   }
 
   render() {
@@ -27,4 +27,8 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App);
+const mapStateToProps = state => {
+  return {state: state};
+};
+
+export default connect(mapStateToProps)(App);

@@ -12,9 +12,12 @@ export const authWithGitHub = () => {
       })
     // 認証済みかどうか確認
     firebase.auth().onAuthStateChanged(user => {
-      user
-        ? dispatch(authorizationSuccess(user))
-        : dispatch(redirectToGitHub())
+      if (user) {
+        dispatch(authorizationSuccess(user));
+        dispatch(fetchFlip(user.displayName));
+      } else {
+        dispatch(redirectToGitHub())
+      }
     })
   }
 }

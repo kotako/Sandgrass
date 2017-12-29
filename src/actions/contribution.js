@@ -1,10 +1,10 @@
 import Moment from 'moment';
 
 // Contributions Container
-export function fetchContributions(start) {
+export function fetchContributions(name, start) {
   return async dispatch => {
     // コミット数をカウント
-    const events = await fetchJson(`https://api.github.com/users/Takorras/events`);
+    const events = await fetchJson(`https://api.github.com/users/${name}/events`);
     const commits = getCommits(events, start);
     dispatch(receiveCommits(commits.length));
 

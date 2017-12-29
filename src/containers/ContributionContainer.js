@@ -8,7 +8,7 @@ class ContributionContainer extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       if (this.props.state.timer.counting) {
-        this.props.dispatch(fetchContributions(this.props.state.timer.startedAt))
+        this.props.dispatch(fetchContributions(this.props.state.user.name, this.props.state.timer.startedAt))
       }},
       60000
     );

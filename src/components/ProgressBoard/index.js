@@ -4,7 +4,7 @@ import ContributionContainer from '../../containers/ContributionContainer';
 import FlipsContainer from '../../containers/FlipsContainer';
 
 const ProgressBoard = () => (
-  <Grid columns={2}>
+  <Grid columns={2} padded>
     <Grid.Row>
       <Grid.Column>
       </Grid.Column>

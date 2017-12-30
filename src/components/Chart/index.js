@@ -1,14 +1,14 @@
 import React from 'react';
-import { AreaChart, XAxis, YAxis, CartesianGrid, Area, Tooltip } from 'recharts';
+import { BarChart, XAxis, YAxis, CartesianGrid, Bar, Tooltip } from 'recharts';
 
 const Chart = (data, xkey, ykey, color) => (
-  <AreaChart sycId='areaChart' data={data} width={300} height={200}>
+  <BarChart sycId='areaChart' data={data} width={400} height={200}>
     <XAxis dataKey={xkey}/>
     <YAxis/>
     <CartesianGrid strokeDasharray='3 3'/>
     <Tooltip/>
-    <Area type='monotone' dataKey={ykey} stroke={color} fill={color}/>
-  </AreaChart>
+    <Bar dataKey={ykey} fill={color}/>
+  </BarChart>
 );
 
 export default Chart;

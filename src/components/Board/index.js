@@ -1,27 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Grid } from 'semantic-ui-react';
 import TimerContainer from '../../containers/TimerContainer';
 import ProgressBoard from '../ProgressBoard';
-
-const Wrapper = styled.div`
-  padding: 2.4em;
-  background-color: #2c3e50;
-`
+import QiitaCardContainer from '../../containers/QiitaCardContainer';
+import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
 
 const Board = () => (
-  <Wrapper>
-    <Grid columns={2}>
-      <Grid.Row>
-        <Grid.Column>
+    <Grid padded columns={2} stretched>
+      <Grid.Row color='black'>
+        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16} >
           <TimerContainer/>
         </Grid.Column>
-        <Grid.Column widescreen='8' largeScreen='8' computer='7' tablet='15' mobile='16' floated='right'>
+        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16} >
           <ProgressBoard />
         </Grid.Column>
       </Grid.Row>
+
+      <Grid.Row reversed>
+        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
+          <QiitaCardContainer/>
+        </Grid.Column>
+        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
+          <AnalyzerCardContainer />
+        </Grid.Column>
+        <Grid.Column stretched/>
+      </Grid.Row>
     </Grid>
-  </Wrapper>
 )
 
 export default Board;

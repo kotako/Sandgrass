@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Board from '../Board';
-import RelatedInfoBoard from '../RelatedInfoBoard';
 import HeaderMenu from '../HeaderMenu';
 import { authWithGitHub } from '../../actions';
 
 const Wrapper = styled.div`
-  background-color: #F1F1F1;
+  background-color: #777777;
+  height: 100vh;
 `
 
 class App extends React.Component {
@@ -21,7 +21,6 @@ class App extends React.Component {
       <Wrapper>
         <HeaderMenu />
         <Board />
-        <RelatedInfoBoard />
       </Wrapper>
     )
   }

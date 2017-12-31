@@ -1,10 +1,10 @@
 import React from 'react';
 import { Segment, Statistic, Image } from 'semantic-ui-react';
-import TimerIcon from '../../assets/timer-128.png'
+import hourglassIcon from '../../assets/hourglass.png'
 
 const FlipLabel = ({ flips }) => (
   <Segment inverted color='purple' textAlign='center'>
-    <Image src={TimerIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
+    <Image src={hourglassIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
     <Statistic inverted>
       <Statistic.Value>
         {flips ? Object.keys(flips).length : 0}

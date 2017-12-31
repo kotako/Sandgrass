@@ -22,7 +22,7 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
 const mapStateToProps = state => {
   return {
-    w: 500,
+    w: 450,
     h: 200,
     data: state.user.flips ? createFlipsArray(state.user.flips, state.analyzer.border, state.analyzer.threshold, state.analyzer.format) : null,
     dataKey: 'key',

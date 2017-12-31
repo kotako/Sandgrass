@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar } from 'recharts';
 
-const MixChart = (w, h, data, dataKey, leftDataKey, rightDataKey, leftColor, rightColor) => (
+const MixChart = ({w, h, data, dataKey, leftDataKey, rightDataKey, leftColor, rightColor}) => (
   <BarChart width={w} height={h} data={data}>
     <XAxis dataKey={dataKey}/>
     <YAxis yAxisId='left' orientation='left' stroke={leftColor}/>

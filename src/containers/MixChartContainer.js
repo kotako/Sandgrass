@@ -5,7 +5,7 @@ import MixChart from '../components/MixChart';
 const createFlipsArray = (flips, border, threshold, format) => {
   let result = [];
   for (let i = border; i < Moment().unix(); i+=threshold) {
-    result.push({ key: Moment.unix(i).format(format), commits: 0, working_time: 0, flips: 0 });
+    result.push({ key: Moment.unix(i).format(format), commits: 0, working_time_min: 0, flips: 0 });
   }
 
   Object.keys(flips).forEach((key, index, array) => {
@@ -13,7 +13,7 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
     if (flip.started_at > border) {
       result[Math.ceil((flip.started_at - border) / threshold) - 1].commits += flip.commits;
-      result[Math.ceil((flip.started_at - border) / threshold) - 1].working_time += flip.working_time;
+      result[Math.ceil((flip.started_at - border) / threshold) - 1].working_time_min += Math.round(flip.working_time / 60);
       result[Math.ceil((flip.started_at - border) / threshold) - 1].flips++;
     }
   })
@@ -22,7 +22,7 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
 const mapStateToProps = state => {
   return {
-    w: 450,
+    w: 500,
     h: 200,
     data: state.user.flips ? createFlipsArray(state.user.flips, state.analyzer.border, state.analyzer.threshold, state.analyzer.format) : null,
     dataKey: 'key',

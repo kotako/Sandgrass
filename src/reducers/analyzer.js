@@ -5,7 +5,7 @@ const analyzer = (state ={}, action) => {
     case 'INIT':
       return {
         ...state,
-        leftDataKey: 'working_time',
+        leftDataKey: 'working_time_min',
         rightDataKey: 'commits',
         threshold: 86400,
         border: Moment().day(-6).startOf('date').unix(),

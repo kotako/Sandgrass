@@ -33,7 +33,7 @@ class ProgressBoardContainer extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <WorkTimeLabel working_time={this.props.working_time}/>
+            <WorkTimeLabel working_time={this.props.flipsToday.reduce((sum, flip) => sum + flip.working_time, 0)}/>
           </Grid.Column>
           <Grid.Column>
             <ContributionLabel commits={this.props.commits}/>
@@ -47,9 +47,8 @@ class ProgressBoardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     timer: state.timer,
-    flipsToday: state.user.flipsArrayToday,
+    flipsToday: state.user.flipsArrayToday ? state.user.flipsArrayToday : [],
     userName: state.user.name,
-    working_time: state.user.flipsArrayToday ? state.user.flipsArrayToday.reduce((sum, flip) => sum + flip.working_time, 0) : 0,
     commits: state.contributions.commits
   };
 }

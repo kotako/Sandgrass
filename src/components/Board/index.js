@@ -16,7 +16,7 @@ const Board = () => (
         </Grid.Column>
       </Grid.Row>
 
-      <Grid.Row reversed>
+      <Grid.Row>
         <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
           <QiitaCardContainer/>
         </Grid.Column>

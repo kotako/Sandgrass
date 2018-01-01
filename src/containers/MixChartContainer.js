@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import Moment from 'moment';
 import MixChart from '../components/MixChart';

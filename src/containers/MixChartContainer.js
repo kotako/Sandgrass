@@ -11,10 +11,11 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
   Object.keys(flips).forEach((key, index, array) => {
     const flip = flips[key];
+
     if (flip.started_at > border) {
-      result[Math.round((flip.started_at - border) / threshold)].commits += flip.commits;
-      result[Math.round((flip.started_at - border) / threshold)].working_time += flip.working_time;
-      result[Math.round((flip.started_at - border) / threshold)].flips++;
+      result[Math.ceil((flip.started_at - border) / threshold) - 1].commits += flip.commits;
+      result[Math.ceil((flip.started_at - border) / threshold) - 1].working_time += flip.working_time;
+      result[Math.ceil((flip.started_at - border) / threshold) - 1].flips++;
     }
   })
   return result;

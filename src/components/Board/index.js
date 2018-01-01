@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import TimerContainer from '../../containers/TimerContainer';
-import ProgressBoard from '../ProgressBoard';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
 import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
+import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
 const Board = () => (
     <Grid padded columns={2} stretched>
@@ -12,7 +12,7 @@ const Board = () => (
           <TimerContainer/>
         </Grid.Column>
         <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16} >
-          <ProgressBoard />
+          <ProgressBoardContainer />
         </Grid.Column>
       </Grid.Row>
 

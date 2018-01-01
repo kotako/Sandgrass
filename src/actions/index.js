@@ -1,5 +1,6 @@
 import { firebaseDB } from '../firebase';
 import firebase from 'firebase';
+import Moment from 'moment';
 
 export const authWithGitHub = () => {
   return dispatch => {
@@ -73,7 +74,8 @@ export const authorizationFailed = (error) => {
 export const fetchFlipSuccess = (flips) => {
   return {
     type: 'FETCH_FLIP_SUCCESS',
-    flips: flips
+    flips: flips,
+    flipsArrayToday: findFlipsToday(flips)
   }
 }
 
@@ -82,4 +84,14 @@ export const fetchFlipFailed = (error) => {
     type: 'FETCH_FAILED',
     error: error
   }
+}
+
+const findFlipsToday = flips => {
+  let result = [];
+  Object.keys(flips).forEach((key) => {
+    if (flips[key].started_at >= Moment().startOf('date').unix()){
+      result.push(flips[key]);
+    }
+  })
+  return result;
 }

@@ -8,7 +8,7 @@ const analyzer = (state ={}, action) => {
         leftDataKey: 'working_time_min',
         rightDataKey: 'commits',
         threshold: 86400,
-        border: Moment().day(-6).startOf('date').unix(),
+        border: Moment().startOf('date').unix() - 518400,
         format: 'MM/DD'
       };
     case 'RIGHT_CHART_CHANGED':

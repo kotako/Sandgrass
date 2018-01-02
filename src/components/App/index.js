@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Board from '../Board';
 import HeaderMenu from '../HeaderMenu';
-import { authWithGitHub } from '../../actions';
+import { authWithGitHub, redirectToGitHub } from '../../actions';
+import LoginModal from '../LoginModal';
 
 const Wrapper = styled.div`
   background-color: #777777;
@@ -21,6 +22,9 @@ class App extends React.Component {
       <Wrapper>
         <HeaderMenu />
         <Board />
+        <LoginModal
+          open={this.props.state.user.notAuthorized}
+          onClick={() => this.props.dispatch(redirectToGitHub())}/>
       </Wrapper>
     )
   }

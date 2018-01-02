@@ -17,7 +17,7 @@ export const authWithGitHub = () => {
         dispatch(authorizationSuccess(user));
         dispatch(fetchFlip(user.displayName));
       } else {
-        dispatch(redirectToGitHub())
+        dispatch(authorizationFailed());
       }
     })
   }
@@ -65,7 +65,6 @@ export const authorizationSuccess = (result) => {
 }
 
 export const authorizationFailed = (error) => {
-  console.log(error);
   return {
     type: 'LOGIN_FAILED',
   }

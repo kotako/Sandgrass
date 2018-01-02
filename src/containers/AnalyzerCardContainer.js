@@ -8,6 +8,7 @@ import MixChart from '../components/MixChart';
 const Wrapper = styled.div`
   display: flex;
   text-align: center;
+  vertical-align: middle;
 `
 
 class AnalyzerCardContainer extends React.Component {

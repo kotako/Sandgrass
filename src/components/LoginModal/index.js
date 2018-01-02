@@ -7,7 +7,7 @@ const LoginModal = ({ open, onClick }) => (
       Login to Sandglass
     </Modal.Header>
     <Modal.Actions>
-      <Button fluid positive labelPosition='right' icon='github' labelPosition='left' content='Login with GitHub' onClick={onClick}/>
+      <Button fluid positive icon='github' labelPosition='left' content='Login with GitHub' onClick={onClick}/>
     </Modal.Actions>
   </Modal>
 );

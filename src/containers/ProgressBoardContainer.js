@@ -26,6 +26,7 @@ class ProgressBoardContainer extends React.Component {
       <Grid columns={2} padded>
         <Grid.Row>
           <Grid.Column>
+            <WorkTimeLabel working_time={this.props.flipsToday.reduce((sum, flip) => sum + flip.working_time, 0)}/>
           </Grid.Column>
           <Grid.Column>
             <FlipLabel flips={this.props.flipsToday} />
@@ -33,7 +34,6 @@ class ProgressBoardContainer extends React.Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <WorkTimeLabel working_time={this.props.flipsToday.reduce((sum, flip) => sum + flip.working_time, 0)}/>
           </Grid.Column>
           <Grid.Column>
             <ContributionLabel commits={this.props.commits}/>

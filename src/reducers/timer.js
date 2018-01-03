@@ -1,7 +1,7 @@
 const timer = (state = {}, action) => {
   switch (action.type) {
     case 'TIMER_SWITCH_OVER':
-      return state.start
+      return state.startedAt
         ? {...state, counting: !state.counting}
         : {...state, counting: !state.counting, startedAt: action.now}
     case 'TIMER_ADJUSTED':

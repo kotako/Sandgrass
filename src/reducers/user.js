@@ -3,7 +3,7 @@ const user = (state = {}, action) => {
     case 'LOGIN_SUCCESS':
       return {...state, name: action.name, profileURL: action.profileURL}
     case 'FETCH_FLIP_SUCCESS':
-      return {...state, flips: action.flips, flipsArrayToday: action.flipsArrayToday};
+      return {...state, flips: action.flips, flipsArrayToday: action.flipsArrayToday, langs: action.langs};
     case 'LOGIN_FAILED':
       return {...state, notAuthorized: true}
     default:

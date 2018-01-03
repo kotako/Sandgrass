@@ -8,7 +8,7 @@ class QiitaCardContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchQiitaIssues());
     this.interval = setInterval(() => {
-      this.props.dispatch(fetchQiitaIssues(this.props.state.contributions.langs));
+      this.props.dispatch(fetchQiitaIssues(this.props.langs));
     },
       300000
     );
@@ -20,13 +20,16 @@ class QiitaCardContainer extends React.Component {
 
   render() {
     return (
-      <QiitaCard issues={this.props.state.qiitaCard.issues}/>
+      <QiitaCard issues={this.props.issues}/>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {state: state};
+  return {
+    langs: state.user.langs,
+    issues: state.qiitaCard.issues
+  };
 }
 
 export default connect(mapStateToProps)(QiitaCardContainer);

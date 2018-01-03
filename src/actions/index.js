@@ -74,7 +74,8 @@ export const fetchFlipSuccess = (flips) => {
   return {
     type: 'FETCH_FLIP_SUCCESS',
     flips: flips,
-    flipsArrayToday: findFlipsToday(flips)
+    flipsArrayToday: findFlipsToday(flips),
+    langs: findLangs(flips)
   }
 }
 
@@ -90,6 +91,18 @@ const findFlipsToday = flips => {
   Object.keys(flips).forEach((key) => {
     if (flips[key].started_at >= Moment().startOf('date').unix()){
       result.push(flips[key]);
+    }
+  })
+  return result;
+}
+
+const findLangs = flips => {
+  let result = [];
+  Object.keys(flips).forEach (key => {
+    if (flips[key].langs) {
+      flips[key].langs.forEach(lang => {
+        result.includes(lang) ? {} : result.push(lang)
+      })
     }
   })
   return result;

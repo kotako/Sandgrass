@@ -10,7 +10,7 @@ const TimerWrapper = styled.div`
 
 const Dial = styled.h1`
   color: #F1F1F1;
-  font-size: 9.6em;
+  font-size: 12.0em;
 `
 
 const Timer = ({remain, counting, startedAt, onStartClick, onResetClick, onAdjustClick}) => (

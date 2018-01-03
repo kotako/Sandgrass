@@ -33,7 +33,7 @@ class AnalyzerCardContainer extends React.Component {
             <br/>
             <Statistic size='small'>
               <Statistic.Value>
-                {this.props.data ? Moment.unix(Math.round((this.props.data.reduce((sum, data) => sum+data.working_time_min*60, -32400)))/7).format('HH:mm') : '00:00'}
+                {this.props.data ? Moment.unix(Math.round((this.props.data.reduce((sum, data) => sum+data.working_time_min*60, 0)))/this.props.data.length-32400).format('HH:mm') : '00:00'}
               </Statistic.Value>
               <Statistic.Label>work / day</Statistic.Label>
             </Statistic>

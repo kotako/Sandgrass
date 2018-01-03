@@ -15,10 +15,10 @@ const Board = ({counting}) => (
   <Wrapper>
     <Grid padded columns={2}>
       <Grid.Row color='black' >
-        <Grid.Column computer={10} largeScreen={10} tablet={16} widescreen={8} mobile={16} >
+        <Grid.Column computer={10} largeScreen={10} tablet={16} widescreen={10} mobile={16} >
           <TimerContainer/>
         </Grid.Column>
-        <Grid.Column computer={6} largeScreen={6} tablet={16} widescreen={8} mobile={16} >
+        <Grid.Column computer={6} largeScreen={6} tablet={16} widescreen={6} mobile={16} >
           <ProgressBoardContainer />
         </Grid.Column>
       </Grid.Row>

@@ -7,7 +7,7 @@ import { authWithGitHub, redirectToGitHub } from '../../actions';
 import LoginModal from '../LoginModal';
 
 const Wrapper = styled.div`
-  background-color: #777777;
+  background-color: #1C1C1C;
   height: 100vh;
 `
 
@@ -21,7 +21,9 @@ class App extends React.Component {
     return (
       <Wrapper>
         <HeaderMenu />
-        <Board />
+        <Wrapper>
+        <Board counting={this.props.state.timer.counting}/>
+        </Wrapper>
         <LoginModal
           open={this.props.state.user.notAuthorized}
           onClick={() => this.props.dispatch(redirectToGitHub())}/>

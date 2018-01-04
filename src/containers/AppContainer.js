@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import Board from '../Board';
-import HeaderMenu from '../HeaderMenu';
-import { authWithGitHub, redirectToGitHub } from '../../actions/auth.js';
-import LoginModal from '../LoginModal';
+import Board from '../components/Board';
+import HeaderMenu from '../components/HeaderMenu';
+import LoginModal from '../components/LoginModal';
+import { authWithGitHub, redirectToGitHub } from '../actions/auth.js';
 
 const Wrapper = styled.div`
   background-color: #1C1C1C;
   height: 100vh;
 `
 
-class App extends React.Component {
+class AppContainer extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(authWithGitHub())
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
   return {state: state};
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(AppContainer);

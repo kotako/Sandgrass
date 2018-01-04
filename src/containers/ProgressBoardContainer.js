@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
 import { fetchContributions } from '../actions/contribution.js';
-import WorkTimeLabel from '../components/WorkTimeLabel';
 import ContributionLabel from '../components/ContributionLabel';
 import FlipLabel from '../components/FlipLabel';
 

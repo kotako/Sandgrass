@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
 import { switchOver, init, tick, adjust, finish } from '../actions/timer.js'
-import { postFlip } from '../actions';
+import { postFlip } from '../actions/flip.js';
 
 class TimerContainer extends React.Component {
 

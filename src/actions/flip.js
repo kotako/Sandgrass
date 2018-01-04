@@ -1,33 +1,5 @@
 import { firebaseDB } from '../firebase';
-import firebase from 'firebase';
 import Moment from 'moment';
-
-export const authWithGitHub = () => {
-  return dispatch => {
-    // リダイレクトで来たのかどうか確認して、そうならユーザネームを変更
-    firebase.auth().getRedirectResult()
-      .then(result => {
-        if (result.user) {
-          firebase.auth().currentUser.updateProfile({ displayName: result.additionalUserInfo.username })
-        }
-      })
-    // 認証済みかどうか確認
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        dispatch(authorizationSuccess(user));
-        dispatch(fetchFlip(user.displayName));
-      } else {
-        dispatch(authorizationFailed());
-      }
-    })
-  }
-}
-
-export const redirectToGitHub = () => {
-  return dispatch => {
-    firebase.auth().signInWithRedirect(new firebase.auth.GithubAuthProvider());
-  }
-}
 
 export const fetchFlip = (name) => {
   return dispatch => {
@@ -56,19 +28,6 @@ export const postFlip = (name, startedAt, finishedAt, commits, repos, langs) => 
   }
 }
 
-export const authorizationSuccess = (result) => {
-  return {
-    type: 'LOGIN_SUCCESS',
-    name: result.displayName,
-    profileUrl: result.photoURL
-  }
-}
-
-export const authorizationFailed = (error) => {
-  return {
-    type: 'LOGIN_FAILED',
-  }
-}
 
 export const fetchFlipSuccess = (flips) => {
   return {

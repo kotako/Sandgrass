@@ -8,7 +8,7 @@ export const switchOver = () => {
 }
 
 export const adjust = (remain) => {
-  const times = [10, 600, 1500, 3000];
+  const times = [600, 1500, 3000];
   return {
     type: 'TIMER_ADJUSTED',
     remain: times[(times.indexOf(remain) + 1) % times.length]

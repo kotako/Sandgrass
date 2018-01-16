@@ -4,7 +4,7 @@ import { Card, Feed, Icon } from 'semantic-ui-react';
 const Issue = ({issue}) => (
   <Feed.Event>
     <Feed.Label>
-      <img src={issue ? issue.user.profile_image_url : null}/>
+      <img src={issue ? issue.user.profile_image_url : null} alt='profile_image_url'/>
     </Feed.Label>
     <Feed.Content>
       <Feed.Summary>

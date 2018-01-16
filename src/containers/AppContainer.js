@@ -8,7 +8,6 @@ import { authWithGitHub, redirectToGitHub } from '../actions/auth.js';
 
 const Wrapper = styled.div`
   background-color: #1C1C1C;
-  height: 100vh;
 `
 
 class AppContainer extends React.Component {

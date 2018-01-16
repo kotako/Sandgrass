@@ -60,7 +60,7 @@ const findLangs = flips => {
   Object.keys(flips).forEach (key => {
     if (flips[key].langs) {
       flips[key].langs.forEach(lang => {
-        result.includes(lang) ? {} : result.push(lang)
+        if (!result.includes(lang)) result.push(lang)
       })
     }
   })

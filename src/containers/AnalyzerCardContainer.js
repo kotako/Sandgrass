@@ -24,14 +24,14 @@ class AnalyzerCardContainer extends React.Component {
           <Wrapper>
             {MixChart(this.props)}
             <div>
-            <Statistic size='small'>
+            <Statistic size='small' style={{display: window.screen.width<768 ? 'none' : 'visible'}}>
               <Statistic.Value>
                 {this.props.data ? Math.round((this.props.data.reduce((sum, data) => sum+data.commits, 0)/7)) : 0}
               </Statistic.Value>
               <Statistic.Label>commit / day</Statistic.Label>
             </Statistic>
             <br/>
-            <Statistic size='small'>
+            <Statistic size='small' style={{display: window.screen.width<768 ? 'none' : 'visible'}}>
               <Statistic.Value>
                 {this.props.data ? Moment.unix(Math.round((this.props.data.reduce((sum, data) => sum+data.working_time_min*60, 0)))/this.props.data.length-32400).format('HH:mm') : '00:00'}
               </Statistic.Value>
@@ -65,7 +65,7 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
 const mapStateToProps = state => {
   return {
-    w: 450,
+    w: window.screen.width < 768 ? 320 : 400,
     h: 200,
     data: state.user.flips ? createFlipsArray(state.user.flips, state.analyzer.border, state.analyzer.threshold, state.analyzer.format) : null,
     dataKey: 'key',

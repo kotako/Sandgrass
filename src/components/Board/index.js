@@ -8,7 +8,20 @@ import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
 const Wrapper=styled.div`
   height: 100vh;
-  vertical-align: middle;
+`
+
+const Cell = styled.li`
+  margin: 8px;
+  min-width: 480px;
+`
+
+const ScrollList = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  overflow-x: scroll;
+  margin: 8px;
+  padding: 0;
 `
 
 const Board = ({counting}) => (
@@ -22,19 +35,20 @@ const Board = ({counting}) => (
           <ProgressBoardContainer />
         </Grid.Column>
       </Grid.Row>
-
-      <Transition visible={!counting} animation='slide down'>
-      <Grid.Row>
-        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
-          <QiitaCardContainer/>
-        </Grid.Column>
-        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
-          <AnalyzerCardContainer />
-        </Grid.Column>
-        <Grid.Column stretched/>
-      </Grid.Row>
-      </Transition>
     </Grid>
+
+    <Transition visible={!counting} animation='slide down'>
+      <span>
+        <ScrollList>
+          <Cell>
+            <QiitaCardContainer/>
+          </Cell>
+          <Cell>
+            <AnalyzerCardContainer/>
+          </Cell>
+        </ScrollList>
+      </span>
+    </Transition>
   </Wrapper>
 )
 

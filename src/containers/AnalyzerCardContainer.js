@@ -7,14 +7,13 @@ import MixChart from '../components/MixChart';
 
 const Wrapper = styled.div`
   display: flex;
-  text-align: center;
   vertical-align: middle;
 `
 
 class AnalyzerCardContainer extends React.Component {
   render() {
     return (
-      <Card fluid>
+      <Card fluid style={{minWidth: "600px"}}>
         <Card.Content>
           <Card.Header>
             Weekly Charts
@@ -65,7 +64,7 @@ const createFlipsArray = (flips, border, threshold, format) => {
 
 const mapStateToProps = state => {
   return {
-    w: window.screen.width < 768 ? 320 : 400,
+    w: window.screen.width < 768 ? 320 : 480,
     h: 200,
     data: state.user.flips ? createFlipsArray(state.user.flips, state.analyzer.border, state.analyzer.threshold, state.analyzer.format) : null,
     dataKey: 'key',

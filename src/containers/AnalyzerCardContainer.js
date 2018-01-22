@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 class AnalyzerCardContainer extends React.Component {
   render() {
     return (
-      <Card fluid style={{minWidth: "600px"}}>
+      <Card style={{minWidth: "630px"}}>
         <Card.Content>
           <Card.Header>
             Weekly Charts

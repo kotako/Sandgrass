@@ -12,6 +12,8 @@ const timer = (state = {}, action) => {
       return {...state, counting: false, remain: 1500, startedAt: null, finishedAt: null };
     case 'WORK_FINISHED':
       return {...state, counting: false, remain: 0, finishedAt: action.now};
+    case 'TIMER_ALERM_SET':
+      return {...state, url: action.url};
     default:
       return state;
   }

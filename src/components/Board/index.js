@@ -3,6 +3,7 @@ import { Grid, Transition } from 'semantic-ui-react';
 import TimerContainer from '../../containers/TimerContainer';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
 import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
+import MusicCardContainer from '../../containers/MusicCardContainer';
 import styled from 'styled-components';
 import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
@@ -11,13 +12,11 @@ const Wrapper=styled.div`
 `
 
 const Cell = styled.li`
-  margin: 8px;
-  min-width: 480px;
+  margin: 16px;
 `
 
 const ScrollList = styled.ul`
   display: flex;
-  justify-content: center;
   list-style: none;
   overflow-x: scroll;
   margin: 8px;
@@ -45,6 +44,9 @@ const Board = ({counting}) => (
           </Cell>
           <Cell>
             <AnalyzerCardContainer/>
+          </Cell>
+          <Cell>
+            <MusicCardContainer/>
           </Cell>
         </ScrollList>
       </span>

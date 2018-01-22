@@ -29,3 +29,10 @@ export const finish = () => {
     now: Moment().unix()
   }
 }
+
+export const setAlerm = (url) => {
+  return {
+    type: 'TIMER_ALERM_SET',
+    url: url
+  }
+}

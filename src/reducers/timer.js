@@ -14,6 +14,8 @@ const timer = (state = {}, action) => {
       return {...state, counting: false, remain: 0, finishedAt: action.now};
     case 'TIMER_ALERM_SET':
       return {...state, url: action.url};
+    case 'TIMER_ALERM_SWITCH':
+      return {...state, playing: !state.playing};
     default:
       return state;
   }

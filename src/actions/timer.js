@@ -36,3 +36,9 @@ export const setAlerm = (url) => {
     url: url
   }
 }
+
+export const switchAlerm = () => {
+  return {
+    type: 'TIMER_ALERM_SWITCH'
+  }
+}

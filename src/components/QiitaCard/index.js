@@ -23,7 +23,7 @@ const Issue = ({issue}) => (
 );
 
 const QiitaCard = ({issues}) => (
-  <Card style={{minWidth: "400px"}}>
+  <Card style={{minWidth: "500px"}}>
     <Card.Content>
       <Card.Header>
         Qiita

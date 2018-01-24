@@ -8,10 +8,6 @@ import TodosCardContainer from '../../containers/TodosCardContainer';
 import styled from 'styled-components';
 import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
-const Wrapper=styled.div`
-  height: 100vh;
-`
-
 const Cell = styled.li`
   margin: 16px;
 `
@@ -20,14 +16,15 @@ const ScrollList = styled.ul`
   display: flex;
   list-style: none;
   overflow-x: scroll;
-  margin: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
   padding: 0;
 `
 
 const Board = ({counting}) => (
-  <Wrapper>
-    <Grid padded columns={2}>
-      <Grid.Row color='black' >
+  <div>
+    <Grid inverted padded columns={2}>
+      <Grid.Row>
         <Grid.Column computer={10} largeScreen={10} tablet={16} widescreen={10} mobile={16} >
           <TimerContainer/>
         </Grid.Column>
@@ -55,7 +52,7 @@ const Board = ({counting}) => (
         </ScrollList>
       </span>
     </Transition>
-  </Wrapper>
+  </div>
 )
 
 export default Board;

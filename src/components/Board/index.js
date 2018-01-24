@@ -4,6 +4,7 @@ import TimerContainer from '../../containers/TimerContainer';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
 import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
 import MusicCardContainer from '../../containers/MusicCardContainer';
+import TodosCardContainer from '../../containers/TodosCardContainer';
 import styled from 'styled-components';
 import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
@@ -47,6 +48,9 @@ const Board = ({counting}) => (
           </Cell>
           <Cell>
             <MusicCardContainer/>
+          </Cell>
+          <Cell>
+            <TodosCardContainer/>
           </Cell>
         </ScrollList>
       </span>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Timer from '../components/Timer';
-import { switchOver, init, tick, adjust, finish } from '../actions/timer.js'
+import { init, tick, start, pause, finish, adjust } from '../actions/timer.js'
 import { postFlip } from '../actions/flip.js';
 
 class TimerContainer extends React.Component {
@@ -12,24 +12,13 @@ class TimerContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      // TODO: きれいにする
-      if (this.props.state.timer.remain > 1) {
-        if (this.props.state.timer.counting) {
-          this.props.dispatch(tick());
-        }
-      } else {
-        if (this.props.state.timer.counting) {
-          this.props.dispatch(finish(this.props.state));
-          this.props.dispatch(postFlip(
-            this.props.state.user.name,
-            this.props.state.timer.startedAt,
-            this.props.state.timer.finishedAt,
-            this.props.state.contributions.commits,
-            this.props.state.contributions.repos,
-            this.props.state.contributions.langs
-          ));
-        }
+      if (!this.props.counting) return;
+      if (this.props.remain <= 0) {
+        this.props.dispatch(finish());
+        this.props.dispatch(postFlip());
+        return;
       }
+      this.props.dispatch(tick());
     },
       1000
     );
@@ -42,18 +31,26 @@ class TimerContainer extends React.Component {
   render() {
     return (
       <Timer
-        counting={this.props.state.timer.counting}
-        remain={this.props.state.timer.remain}
-        startedAt={this.props.state.timer.startedAt}
-        onStartClick={() => this.props.dispatch(switchOver())}
+        counting={this.props.counting}
+        remain={this.props.remain}
+        started={this.props.started}
+        onStartClick={() =>
+          this.props.counting
+            ? this.props.dispatch(pause())
+            : this.props.dispatch(start())
+        }
         onResetClick={() => this.props.dispatch(init())}
-        onAdjustClick={() => this.props.dispatch(adjust(this.props.state.timer.remain))}/>
+        onAdjustClick={() => this.props.dispatch(adjust())}/>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {state: state};
+  return {
+    counting: state.timer.counting,
+    remain: state.timer.remain,
+    started: state.timer.startedAt
+  }
 };
 
 export default connect(mapStateToProps)(TimerContainer);

@@ -44,9 +44,6 @@ const Board = ({counting}) => (
             <AnalyzerCardContainer/>
           </Cell>
           <Cell>
-            <MusicCardContainer/>
-          </Cell>
-          <Cell>
             <TodosCardContainer/>
           </Cell>
         </ScrollList>

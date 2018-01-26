@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import { fetchFlip } from './flip.js';
+import { fetchSettings } from './setting.js';
 
 export const authWithGitHub = () => {
   return dispatch => {
@@ -15,6 +16,7 @@ export const authWithGitHub = () => {
       if (user) {
         dispatch(authorizationSuccess(user));
         dispatch(fetchFlip(user.displayName));
+        dispatch(fetchSettings(user.displayName));
       } else {
         dispatch(authorizationFailed());
       }

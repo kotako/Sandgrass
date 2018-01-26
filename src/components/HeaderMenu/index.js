@@ -1,10 +1,11 @@
 import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
+import SettingModalContainer from '../../containers/SettingModalContainer';
 
 const HeaderMenu = () => (
   <Menu inverted>
     <Menu.Item onClick={ () => {}}>
-      <Icon name='setting' size='large'/>
+      <SettingModalContainer/>
     </Menu.Item>
   </Menu>
 )

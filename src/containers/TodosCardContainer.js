@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Card, Input, List } from 'semantic-ui-react';
+import { Card, Input } from 'semantic-ui-react';
 import { addTodoItem } from '../actions/todo.js';
 
 const TodosCardContainer = ({ dispatch, todos }) => {

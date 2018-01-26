@@ -5,6 +5,7 @@ import contributions from './contributions';
 import qiitaCard from './qiitaCard';
 import analyzer from './analyzer';
 import todo from './todo';
+import settings from './settings';
 
 const sandglass = combineReducers({
   timer,
@@ -12,7 +13,8 @@ const sandglass = combineReducers({
   contributions,
   qiitaCard,
   analyzer,
-  todo
+  todo,
+  settings
 })
 
 export default sandglass;

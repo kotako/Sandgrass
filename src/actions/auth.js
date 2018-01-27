@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { fetchFlip } from './flip.js';
+import { fetchFlip, fetchFlipToday } from './flip.js';
 import { fetchSettings } from './setting.js';
 
 export const authWithGitHub = () => {
@@ -17,6 +17,7 @@ export const authWithGitHub = () => {
         dispatch(authorizationSuccess(user));
         dispatch(fetchFlip(user.displayName));
         dispatch(fetchSettings(user.displayName));
+        dispatch(fetchFlipToday(user.displayName));
       } else {
         dispatch(authorizationFailed());
       }
@@ -39,7 +40,5 @@ export const authorizationSuccess = (result) => {
 }
 
 export const authorizationFailed = (error) => {
-  return {
-    type: 'LOGIN_FAILED',
-  }
+  return { type: 'LOGIN_FAILED' }
 }

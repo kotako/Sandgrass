@@ -14,7 +14,7 @@ const Issue = ({issue}) => (
         <Icon name={issue ? 'tag' : null}/>
         {
           issue
-            ? issue.tags.map((tag, index, array) => {return tag.name}).join(', ')
+            ? issue.tags.map(tag => tag.name).join(', ')
             : null
         }
       </Feed.Meta>

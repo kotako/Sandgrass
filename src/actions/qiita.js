@@ -15,16 +15,11 @@ export const fetchQiitaIssues = (langs) => {
   }
 }
 
-function fetchJson(url) {
-  return (async () => {
-    const res = await fetch(url);
-    return await res.json();
-  })();
+const fetchJson = async (url) => {
+  const res = await fetch(url);
+  return res.json();
 }
 
 export const receiveQiitaIssues = (json) => {
-  return {
-    type: 'FETCH_QIITA_ISSUES_SUCCESS',
-    issues: json
-  }
+  return { type: 'FETCH_QIITA_ISSUES_SUCCESS', issues: json }
 }

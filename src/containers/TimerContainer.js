@@ -33,7 +33,7 @@ class TimerContainer extends React.Component {
       <Timer
         counting={this.props.counting}
         remain={this.props.remain}
-        started={this.props.started}
+        started={this.props.started ? true : false}
         onStartClick={() =>
           this.props.counting
             ? this.props.dispatch(pause())

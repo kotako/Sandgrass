@@ -29,7 +29,6 @@ class FinishModalContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.user.flips)
   return {
     finished: state.timer.remain <= 0,
     lastFlip: state.user.flip

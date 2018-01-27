@@ -9,8 +9,8 @@ class ProgressBoardContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      if (this.props.timer.counting) {
-        this.props.dispatch(fetchContributions(this.props.userName, this.props.timer.startedAt))
+      if (this.props.counting) {
+        this.props.dispatch(fetchContributions(this.props.userName, this.props.startedAt))
       }},
       60000
     );
@@ -40,7 +40,8 @@ class ProgressBoardContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    timer: state.timer,
+    counting: state.timer.counting,
+    startedAt: state.timer.startedAt,
     flipsToday: state.user.flipsArrayToday ? state.user.flipsArrayToday : [],
     userName: state.user.name,
     commits: state.contributions.commits

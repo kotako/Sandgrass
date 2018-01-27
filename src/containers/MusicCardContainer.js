@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, Embed, Input, Button } from 'semantic-ui-react';
 import { setAlerm, switchAlerm } from '../actions/timer.js';
+import YoutubePlayer from '../components/YoutubePlayer';
 
 const MusicCardContainer = ({ dispatch, counting, remain, url, playing }) => {
   let input;
@@ -9,7 +10,7 @@ const MusicCardContainer = ({ dispatch, counting, remain, url, playing }) => {
     <Card style={{minWidth: "400px"}}>
       <Card.Content>
         <Card.Header>
-          TuneIn Alerm
+          Alerm
         </Card.Header>
       </Card.Content>
       <Card.Content>
@@ -22,11 +23,6 @@ const MusicCardContainer = ({ dispatch, counting, remain, url, playing }) => {
             placeholder='TuneIn URL'
             onChange={(_, data) => input = data.value} />
         </form>
-        <Embed style={{display: "none"}} url={url} active={playing}/>
-        <p style={url ? {} : {display: "none"}}>
-          <Button circular style={{margin: "8px"}} color='blue' icon={playing ? 'stop' : 'play'} size='large' onClick={() => dispatch(switchAlerm())}/>
-          <span>{url}</span>
-        </p>
       </Card.Content>
     </Card>
   );

@@ -7,19 +7,12 @@ import { postSettings } from '../actions/setting.js';
 class SettingModalContainer extends React.Component {
   state = { modalOpen: false }
 
-  alermSounds = [
-    { key: 'Default', text: 'Default', value: 'Default' },
-    { key: 'Youtube', text: 'Youtube', value: 'Youtube' },
-    { key: 'TuneIn', text: 'TuneIn', value: 'TuneIn' }
-  ];
-
   close = () => { this.setState({modalOpen: false}) }
   open = () => { this.setState({modalOpen: true}) }
   post = () => {
     this.props.dispatch(postSettings(this.props.userName, {
       alerm: {
         enabled: this.alermEnabledCheckBox.state.checked,
-        sound: this.alermSoundDropdown.state.value,
         url: this.state.alerm ? this.state.alerm.url : this.props.settings.alerm.url
       }
     }));
@@ -51,23 +44,9 @@ class SettingModalContainer extends React.Component {
                       <h3>Alerm Sound</h3>
                     </Grid.Column>
                     <Grid.Column>
-                      <Dropdown
-                        fluid
-                        selection
-                        options={this.alermSounds}
-                        placeholder="Select..."
-                        ref={(Dropdown) => this.alermSoundDropdown = Dropdown}
-                        defaultValue={this.props.settings ? this.props.settings.alerm.sound : "Default"}/>
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <h3>URL</h3>
-                    </Grid.Column>
-                    <Grid.Column>
                       <Input
                         fluid
-                        placeholder="Alerm sound URL..."
+                        placeholder="YouTube URL..."
                         onChange={(_, data) => this.setState({...this.state, alerm: {...this.state.alerm, url: data.value}})}
                         defaultValue={this.props.settings ? this.props.settings.alerm.url : ""}/>
                     </Grid.Column>

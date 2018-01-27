@@ -27,13 +27,3 @@ export const adjust = () => {
 export const modalClose = () => {
   return { type: 'FINISH_MODAL_CLOSE' }
 }
-
-// タイマーの機能じゃないやつら
-
-export const setAlerm = (url) => {
-  return { type: 'TIMER_ALERM_SET', url: url }
-}
-
-export const switchAlerm = () => {
-  return { type: 'TIMER_ALERM_SWITCH' }
-}

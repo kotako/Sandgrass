@@ -9,6 +9,7 @@ export function fetchContributions(name, start) {
 
     // レポジトリの情報を確認
     const workingReposUrl = getWorkingRepos(events, start);
+    dispatch(receiveRepos(workingReposUrl));
     const langs = await fetchWorkingLangs(workingReposUrl);
     dispatch(receiveLanguages(langs));
   }
@@ -44,6 +45,10 @@ const fetchWorkingLangs = async (urlArray) => {
 
 export const receiveCommits = (commits) => {
   return { type: 'FETCH_COMMITS_SUCCESS', commits: commits }
+}
+
+export const receiveRepos = (repos) => {
+  return { type: 'FETCH_REPOS_SUCCESS', repos: repos }
 }
 
 export const receiveLanguages = (langs) => {

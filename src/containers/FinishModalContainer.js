@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'semantic-ui-react';
 import ContributionLabel from '../components/ContributionLabel';
+import { modalClose } from '../actions/timer.js';
 
 class FinishModalContainer extends React.Component {
 
-  state = { modalOpen: true }
-  close = () => { this.setState({modalOpen: false}) }
+  close = () => { this.props.dispatch(modalClose()) }
 
   render() {
     return (
-      <Modal open={this.props.finished === this.state.modalOpen}>
+      <Modal open={this.props.modalOpen}>
         <Modal.Header>Let's have a break!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
@@ -30,8 +30,7 @@ class FinishModalContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    finished: state.timer.remain <= 0,
-    lastFlip: state.user.flip
+    modalOpen: state.timer.finishModalOpen
   }
 }
 

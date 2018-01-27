@@ -15,7 +15,14 @@ class TimerContainer extends React.Component {
       if (!this.props.counting) return;
       if (this.props.remain <= 0) {
         this.props.dispatch(finish());
-        this.props.dispatch(postFlip());
+        this.props.dispatch(postFlip(
+          this.props.userName,
+          this.props.startedAt,
+          this.props.finishedAt,
+          this.props.commits,
+          this.props.repos,
+          this.props.langs
+        ));
         return;
       }
       this.props.dispatch(tick());
@@ -33,7 +40,7 @@ class TimerContainer extends React.Component {
       <Timer
         counting={this.props.counting}
         remain={this.props.remain}
-        started={this.props.started ? true : false}
+        started={this.props.startedAt ? true : false}
         onStartClick={() =>
           this.props.counting
             ? this.props.dispatch(pause())
@@ -49,7 +56,12 @@ const mapStateToProps = state => {
   return {
     counting: state.timer.counting,
     remain: state.timer.remain,
-    started: state.timer.startedAt
+    startedAt: state.timer.startedAt,
+    finishedAt: state.timer.finishedAt,
+    userName: state.user.name,
+    commits: state.contributions.commits,
+    langs: state.contributions.langs,
+    repos: state.contributions.repos
   }
 };
 

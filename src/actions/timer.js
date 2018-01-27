@@ -24,6 +24,10 @@ export const adjust = () => {
   return { type: 'TIMER_ADJUSTED' }
 }
 
+export const modalClose = () => {
+  return { type: 'FINISH_MODAL_CLOSE' }
+}
+
 // タイマーの機能じゃないやつら
 
 export const setAlerm = (url) => {

@@ -25,7 +25,7 @@ class FinishModalContainer extends React.Component {
           <Button color="green"
             onClick={() => {
               this.close();
-              this.props.dispatch(setBreak(300));
+              this.props.dispatch(setBreak(30));
               this.props.dispatch(start());
             }}>Have a break 5 mins</Button>
           <Button color="green"

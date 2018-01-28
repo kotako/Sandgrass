@@ -36,7 +36,7 @@ const Board = ({ counting, breaking }) => (
       </Grid.Row>
     </Grid>
 
-    <Transition visible={!counting === !breaking} animation='slide down'>
+    <Transition visible={!counting || breaking} animation='slide down'>
       <span>
         <ScrollList>
           <Cell>

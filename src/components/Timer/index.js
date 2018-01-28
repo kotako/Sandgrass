@@ -15,7 +15,7 @@ const Dial = styled.h1`
   }
 `
 
-const Timer = ({remain, counting, started, onStartClick, onResetClick, onAdjustClick}) => (
+const Timer = ({breaking, remain, counting, started, onStartClick, onResetClick, onAdjustClick}) => (
   <TimerWrapper>
     <Dial>
       {moment.unix(remain).format('mm:ss')}
@@ -30,7 +30,7 @@ const Timer = ({remain, counting, started, onStartClick, onResetClick, onAdjustC
     </Button>
     <Button inverted color='yellow' onClick={onResetClick} size='huge'>
       <Icon name='refresh'/>
-      Reset
+      {breaking ? 'Start Working' : 'Reset'}
     </Button>
   </TimerWrapper>
 );

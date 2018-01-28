@@ -16,6 +16,7 @@ class TimerContainer extends React.Component {
       if (!this.props.counting) return;
       if (this.props.remain <= 0) {
         this.props.dispatch(finish());
+        if (this.props.breaking) return;
         this.props.dispatch(postFlip(
           this.props.userName,
           this.props.startedAt,
@@ -40,6 +41,7 @@ class TimerContainer extends React.Component {
     return (
       <div>
       <Timer
+        breaking={this.props.breaking}
         counting={this.props.counting}
         remain={this.props.remain}
         started={this.props.startedAt ? true : false}
@@ -61,6 +63,7 @@ class TimerContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     counting: state.timer.counting,
+    breaking: state.timer.breaking,
     remain: state.timer.remain,
     startedAt: state.timer.startedAt,
     finishedAt: state.timer.finishedAt,

@@ -8,7 +8,7 @@ import AppContainer from './containers/AppContainer';
 import sandglass from './reducers'
 import registerServiceWorker from './config/registerServiceWorker';
 
-let store = createStore(sandglass, applyMiddleware(thunk));
+const store = createStore(sandglass, applyMiddleware(thunk));
 
 render(
   <Provider store={store}>

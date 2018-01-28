@@ -22,10 +22,10 @@ class AppContainer extends React.Component {
     return (
       <Wrapper>
         <HeaderMenu />
-        <Board counting={this.props.state.timer.counting}/>
+        <Board counting={this.props.counting}/>
         <FinishModalContainer/>
         <LoginModal
-          open={this.props.state.user.notAuthorized}
+          open={this.props.notAuthorized}
           onClick={() => this.props.dispatch(redirectToGitHub())}/>
       </Wrapper>
     )
@@ -33,7 +33,10 @@ class AppContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {state: state};
+  return {
+    counting: state.timer.counting,
+    notAuthorized: state.user.notAuthorized
+  }
 };
 
 export default connect(mapStateToProps)(AppContainer);

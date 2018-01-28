@@ -39,9 +39,6 @@ class TimerContainer extends React.Component {
   render() {
     return (
       <div>
-      <YoutubePlayer
-        url={this.props.alermUrl}
-        playing={this.props.finishModalOpen}/>
       <Timer
         counting={this.props.counting}
         remain={this.props.remain}
@@ -53,6 +50,9 @@ class TimerContainer extends React.Component {
         }
         onResetClick={() => this.props.dispatch(init())}
         onAdjustClick={() => this.props.dispatch(adjust())}/>
+        <YoutubePlayer
+          playing={this.props.alermEnabled ? this.props.finishModalOpen : false}
+          url={this.props.alermEnabled ? this.props.alermUrl : ''} />
       </div>
     );
   }
@@ -64,6 +64,7 @@ const mapStateToProps = state => {
     remain: state.timer.remain,
     startedAt: state.timer.startedAt,
     finishedAt: state.timer.finishedAt,
+    alermEnabled: state.settings.value ? state.settings.value.alerm.enabled : false,
     alermUrl: state.settings.value ? state.settings.value.alerm.url : '',
     finishModalOpen: state.timer.finishModalOpen,
     userName: state.user.name,

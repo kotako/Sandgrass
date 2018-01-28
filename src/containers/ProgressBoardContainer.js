@@ -42,7 +42,7 @@ const mapStateToProps = state => {
   return {
     counting: state.timer.counting,
     startedAt: state.timer.startedAt,
-    flipsToday: state.user.flipsArrayToday ? state.user.flipsArrayToday : [],
+    flipsToday: state.user.flipsArrayToday || [],
     userName: state.user.name,
     commits: state.contributions.commits
   };

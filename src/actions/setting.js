@@ -16,14 +16,9 @@ export const postSettings = (name, settings) => {
 }
 
 export const loading = () => {
-  return {
-    type: 'LOADING_SETTINGS'
-  }
+  return { type: 'LOADING_SETTINGS' }
 }
 
 export const receiveSettings = (json) => {
-  return {
-    type: 'FETCH_SETTINGS_SUCCESS',
-    response: json
-  }
+  return { type: 'FETCH_SETTINGS_SUCCESS', response: json }
 }

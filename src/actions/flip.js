@@ -28,9 +28,9 @@ export const postFlip = (name, startedAt, finishedAt, commits, repos, langs) => 
       started_at: startedAt,
       finished_at: finishedAt,
       working_time: finishedAt - startedAt,
-      commits: commits ? commits : 0,
-      repos: repos ? repos : null,
-      langs: langs ? langs: null
+      commits: commits || 0,
+      repos: repos || null,
+      langs: langs || null
     })
   }
 }

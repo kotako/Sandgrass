@@ -8,7 +8,10 @@ import styled from 'styled-components';
 import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
 const Cell = styled.li`
-  margin: 16px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
 `
 
 const ScrollList = styled.ul`
@@ -22,7 +25,7 @@ const ScrollList = styled.ul`
 
 const Board = ({counting}) => (
   <div>
-    <Grid inverted padded columns={2}>
+    <Grid inverted columns={2}>
       <Grid.Row>
         <Grid.Column computer={10} largeScreen={10} tablet={16} widescreen={10} mobile={16} >
           <TimerContainer/>

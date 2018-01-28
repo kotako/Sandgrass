@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, Grid, Icon, Checkbox, Input, Dropdown, Button, Loader } from 'semantic-ui-react';
+import { Modal, Grid, Icon, Checkbox, Input, Button, Loader } from 'semantic-ui-react';
 import { postSettings } from '../actions/setting.js';
 
 //! :TODO 色々と終わっているので気持ちが落ち着いたら早めに直す

@@ -16,8 +16,10 @@ class FinishModalContainer extends React.Component {
         <Modal.Content>
           <Modal.Description>
             <p>This Flip...</p>
-            <WorkTimeLabel working_time={0}/>
-            <ContributionLabel commits={0}/>
+            <WorkTimeLabel
+              working_time={this.props.latestFlip ? this.props.latestFlip.working_time : 0}/>
+            <ContributionLabel
+              commits={this.props.latestFlip ? this.props.latestFlip.commits : 0}/>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
@@ -42,6 +44,7 @@ class FinishModalContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    latestFlip: state.user.latestFlip,
     modalOpen: state.timer.finishModalOpen
   }
 }

@@ -7,7 +7,7 @@ const contributions = (state = {}, action) => {
     case 'FETCH_REPOS_SUCCESS':
       return { ...state, repos: action.repos };
     case 'INIT':
-      return { ...state, commits: 0 };
+      return { ...state, commits: 0, repos: null, langs: null };
     default:
       return state;
   }

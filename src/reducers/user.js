@@ -3,7 +3,8 @@ const user = (state = {}, action) => {
     case 'LOGIN_SUCCESS':
       return { ...state, name: action.name, profileURL: action.profileURL }
     case 'FETCH_FLIP_SUCCESS':
-      return { ...state, flips: action.flips, langs: action.langs };
+      const latestFlip = action.flips[Object.keys(action.flips)[Object.keys(action.flips).length - 1]];
+      return { ...state, flips: action.flips, langs: action.langs, latestFlip: latestFlip };
     case 'FETCH_FLIP_TODAY_SUCCESS':
       return { ...state, flipsArrayToday: action.flips };
     case 'LOGIN_FAILED':

@@ -9,9 +9,12 @@ class YoutubePlayer extends React.Component {
 
   render () {
     if (this.player) {
-      this.props.playing
-        ? this.player.playVideo()
-        : this.player.pauseVideo()
+      if (this.props.playing) {
+        this.player.playVideo()
+      } else {
+        this.player.pauseVideo()
+        this.player.seekTo(0)
+      }
     }
     return (
       <YouTube

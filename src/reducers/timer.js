@@ -1,7 +1,7 @@
 const timer = (state = {}, action) => {
   switch (action.type) {
     case 'INIT':
-      return { ...state, counting: false, remain: 1500, startedAt: null, finishedAt: null, finishModalOpen: false };
+      return { ...state, counting: false, remain: 1500, startedAt: null, finishedAt: null, finishModalOpen: false, breaking: false };
     case 'TIMER_TICKED':
       return { ...state, remain: state.remain-1 }
     case 'TIMER_PAUSED':
@@ -17,6 +17,8 @@ const timer = (state = {}, action) => {
       return { ...state, counting: false, remain: 0, finishedAt: action.now, finishModalOpen: true }
     case 'FINISH_MODAL_CLOSE':
       return { ...state, finishModalOpen: false }
+    case 'TIMER_BREAK_SET':
+      return { ...state, breaking: true, remain: action.breakTime, finishedAt: null }
     default:
       return state;
   }

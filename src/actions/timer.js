@@ -27,3 +27,7 @@ export const adjust = () => {
 export const modalClose = () => {
   return { type: 'FINISH_MODAL_CLOSE' }
 }
+
+export const setBreak = (breakTime) => {
+  return { type: 'TIMER_BREAK_SET', breakTime: breakTime }
+}

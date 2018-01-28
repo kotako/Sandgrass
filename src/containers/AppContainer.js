@@ -22,7 +22,7 @@ class AppContainer extends React.Component {
     return (
       <Wrapper>
         <HeaderMenu />
-        <Board counting={this.props.counting}/>
+        <Board counting={this.props.counting} breaking={this.props.breaking}/>
         <FinishModalContainer/>
         <LoginModal
           open={this.props.notAuthorized}
@@ -35,6 +35,7 @@ class AppContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     counting: state.timer.counting,
+    breaking: state.timer.breaking,
     notAuthorized: state.user.notAuthorized
   }
 };

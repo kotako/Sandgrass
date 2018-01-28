@@ -23,7 +23,7 @@ const ScrollList = styled.ul`
   padding: 0;
 `
 
-const Board = ({counting}) => (
+const Board = ({ counting, breaking }) => (
   <div>
     <Grid inverted columns={2}>
       <Grid.Row>
@@ -36,7 +36,7 @@ const Board = ({counting}) => (
       </Grid.Row>
     </Grid>
 
-    <Transition visible={!counting} animation='slide down'>
+    <Transition visible={!counting === !breaking} animation='slide down'>
       <span>
         <ScrollList>
           <Cell>
@@ -45,9 +45,7 @@ const Board = ({counting}) => (
           <Cell>
             <AnalyzerCardContainer/>
           </Cell>
-          <Cell>
-            <TodosCardContainer/>
-          </Cell>
+
         </ScrollList>
       </span>
     </Transition>

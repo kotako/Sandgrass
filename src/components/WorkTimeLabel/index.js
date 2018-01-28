@@ -8,7 +8,7 @@ const WorkTimeLabel = ({ working_time }) => (
     <Image src={TimerIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
     <Statistic inverted>
       <Statistic.Value>
-        {working_time ? Moment.unix(working_time+54000).format('mm:ss') : '0:00'}
+        {working_time ? Moment.unix(working_time+54000).format('m') : '0:00'}
       </Statistic.Value>
       <Statistic.Label>minutes</Statistic.Label>
     </Statistic>

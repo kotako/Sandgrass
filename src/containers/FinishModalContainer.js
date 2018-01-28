@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Modal } from 'semantic-ui-react';
+import { Button, Modal, Grid } from 'semantic-ui-react';
 import ContributionLabel from '../components/ContributionLabel';
 import WorkTimeLabel from '../components/WorkTimeLabel';
 import { modalClose, setBreak, start } from '../actions/timer.js';
@@ -11,15 +11,23 @@ class FinishModalContainer extends React.Component {
 
   render() {
     return (
-      <Modal open={this.props.modalOpen}>
+      <Modal size='small' open={this.props.modalOpen}>
         <Modal.Header>Let's have a break!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <p>This Flip...</p>
-            <WorkTimeLabel
-              working_time={this.props.latestFlip ? this.props.latestFlip.working_time : 0}/>
-            <ContributionLabel
-              commits={this.props.latestFlip ? this.props.latestFlip.commits : 0}/>
+            <h3>This Flip</h3>
+            <Grid columns={2} >
+              <Grid.Row>
+                <Grid.Column>
+                  <WorkTimeLabel
+                    working_time={this.props.latestFlip ? this.props.latestFlip.working_time : 0}/>
+                </Grid.Column>
+                <Grid.Column>
+                  <ContributionLabel
+                    commits={this.props.latestFlip ? this.props.latestFlip.commits : 0}/>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
@@ -27,7 +35,7 @@ class FinishModalContainer extends React.Component {
           <Button color="green"
             onClick={() => {
               this.close();
-              this.props.dispatch(setBreak(30));
+              this.props.dispatch(setBreak(300));
               this.props.dispatch(start());
             }}>Have a break 5 mins</Button>
           <Button color="green"

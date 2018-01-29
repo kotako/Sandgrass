@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Moment from 'moment';
 import { Card, Statistic } from 'semantic-ui-react';
-import MixChart from '../components/MixChart';
+import WeeklyChart from '../components/WeeklyChart';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,12 +16,12 @@ class AnalyzerCardContainer extends React.Component {
       <Card style={{minWidth: "630px"}}>
         <Card.Content>
           <Card.Header>
-            Weekly Charts
+            Weekly
           </Card.Header>
         </Card.Content>
         <Card.Content>
           <Wrapper>
-            {MixChart(this.props)}
+            {WeeklyChart(this.props)}
             <div>
             <Statistic size='small' style={{display: window.screen.width<768 ? 'none' : 'visible'}}>
               <Statistic.Value>

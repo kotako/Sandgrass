@@ -22,7 +22,7 @@ class ProgressBoardContainer extends React.Component {
 
   render() {
     return (
-      <Grid columns={1} padded>
+      <Grid columns={1}>
         <Grid.Row>
           <Grid.Column>
             <FlipLabel flips={this.props.flipsToday} />

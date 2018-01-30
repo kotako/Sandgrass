@@ -1,31 +1,33 @@
 import Moment from 'moment';
 
-export const switchOver = () => {
-  return {
-    type: 'TIMER_SWITCH_OVER',
-    now: Moment().unix()
-  }
-}
-
-export const adjust = (remain) => {
-  const times = [10, 600, 1500, 3000];
-  return {
-    type: 'TIMER_ADJUSTED',
-    remain: times[(times.indexOf(remain) + 1) % times.length]
-  }
+export const init = () => {
+  return { type: 'INIT' }
 }
 
 export const tick = () => {
   return { type: 'TIMER_TICKED' }
 }
 
-export const init = () => {
-  return { type: 'INIT' }
+export const pause = () => {
+  return { type: 'TIMER_PAUSED' }
+}
+
+export const start = () => {
+  return { type: 'TIMER_STARTED', now: Moment().unix() }
 }
 
 export const finish = () => {
-  return {
-    type: 'WORK_FINISHED',
-    now: Moment().unix()
-  }
+  return { type: 'TIMER_FINISHED', now: Moment().unix() }
+}
+
+export const adjust = () => {
+  return { type: 'TIMER_ADJUSTED' }
+}
+
+export const modalClose = () => {
+  return { type: 'FINISH_MODAL_CLOSE' }
+}
+
+export const setBreak = (breakTime) => {
+  return { type: 'TIMER_BREAK_SET', breakTime: breakTime }
 }

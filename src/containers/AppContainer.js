@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import Board from '../components/Board';
 import HeaderMenu from '../components/HeaderMenu';
 import LoginModal from '../components/LoginModal';
+import FinishModalContainer from './FinishModalContainer';
 import { authWithGitHub, redirectToGitHub } from '../actions/auth.js';
 
 const Wrapper = styled.div`
-  background-color: #1C1C1C;
   height: 100vh;
+  background-color: #1C1C1C;
 `
 
 class AppContainer extends React.Component {
@@ -21,11 +22,10 @@ class AppContainer extends React.Component {
     return (
       <Wrapper>
         <HeaderMenu />
-        <Wrapper>
-        <Board counting={this.props.state.timer.counting}/>
-        </Wrapper>
+        <Board counting={this.props.counting} breaking={this.props.breaking}/>
+        <FinishModalContainer/>
         <LoginModal
-          open={this.props.state.user.notAuthorized}
+          open={this.props.notAuthorized}
           onClick={() => this.props.dispatch(redirectToGitHub())}/>
       </Wrapper>
     )
@@ -33,7 +33,11 @@ class AppContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {state: state};
+  return {
+    counting: state.timer.counting,
+    breaking: state.timer.breaking,
+    notAuthorized: state.user.notAuthorized
+  }
 };
 
 export default connect(mapStateToProps)(AppContainer);

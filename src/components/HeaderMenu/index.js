@@ -1,9 +1,12 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
+import SettingModalContainer from '../../containers/SettingModalContainer';
 
 const HeaderMenu = () => (
-  <Menu color='black' inverted attached='top'>
-    <Menu.Item name='SandGlass' />
+  <Menu inverted>
+    <Menu.Item onClick={ () => {}}>
+      <SettingModalContainer/>
+    </Menu.Item>
   </Menu>
 )
 

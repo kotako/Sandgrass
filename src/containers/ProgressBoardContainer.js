@@ -9,10 +9,10 @@ class ProgressBoardContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      if (this.props.timer.counting) {
-        this.props.dispatch(fetchContributions(this.props.userName, this.props.timer.startedAt))
+      if (this.props.counting && !this.props.breaking) {
+        this.props.dispatch(fetchContributions(this.props.userName, this.props.startedAt, this.props.accessToken));
       }},
-      60000
+      20000
     );
   }
 
@@ -22,7 +22,7 @@ class ProgressBoardContainer extends React.Component {
 
   render() {
     return (
-      <Grid columns={1} padded>
+      <Grid columns={1}>
         <Grid.Row>
           <Grid.Column>
             <FlipLabel flips={this.props.flipsToday} />
@@ -40,9 +40,12 @@ class ProgressBoardContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    timer: state.timer,
-    flipsToday: state.user.flipsArrayToday ? state.user.flipsArrayToday : [],
+    breaking: state.timer.breaking,
+    counting: state.timer.counting,
+    startedAt: state.timer.startedAt,
+    flipsToday: state.user.flipsArrayToday || [],
     userName: state.user.name,
+    accessToken: state.user.accessToken,
     commits: state.contributions.commits
   };
 }

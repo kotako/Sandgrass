@@ -7,7 +7,7 @@ const ContributionLabel = ({ commits }) => (
     <Image src={GitHubIcon} size='tiny' inline verticalAlign='bottom' spaced='right'/>
     <Statistic inverted>
       <Statistic.Value>
-        {commits ? commits : 0}
+        { commits || 0 }
       </Statistic.Value>
       <Statistic.Label>Contributions</Statistic.Label>
     </Statistic>

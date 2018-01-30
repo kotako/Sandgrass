@@ -3,39 +3,53 @@ import { Grid, Transition } from 'semantic-ui-react';
 import TimerContainer from '../../containers/TimerContainer';
 import QiitaCardContainer from '../../containers/QiitaCardContainer';
 import AnalyzerCardContainer from '../../containers/AnalyzerCardContainer';
+import TodosCardContainer from '../../containers/TodosCardContainer';
 import styled from 'styled-components';
 import ProgressBoardContainer from '../../containers/ProgressBoardContainer';
 
-const Wrapper=styled.div`
-  height: 100vh;
-  vertical-align: middle;
+const Cell = styled.li`
+  margin-top: 4px;
+  margin-bottom: 16px;
+  margin-left: 32px;
+  &:last-child {
+    padding-right: 32px;
+  }
 `
 
-const Board = ({counting}) => (
-  <Wrapper>
-    <Grid padded columns={2}>
-      <Grid.Row color='black' >
-        <Grid.Column computer={10} largeScreen={10} tablet={16} widescreen={10} mobile={16} >
+const ScrollList = styled.ul`
+  display: flex;
+  list-style: none;
+  overflow-x: scroll;
+`
+
+const Board = ({ counting, breaking }) => (
+  <div>
+    <Grid verticalAlign='middle' inverted columns={4}>
+      <Grid.Row columns={4}>
+        <Grid.Column computer={2} largeScreen={2} widescreen={2}/>
+        <Grid.Column computer={6} largeScreen={6} tablet={16} widescreen={6} mobile={16} >
           <TimerContainer/>
         </Grid.Column>
         <Grid.Column computer={6} largeScreen={6} tablet={16} widescreen={6} mobile={16} >
           <ProgressBoardContainer />
         </Grid.Column>
+        <Grid.Column computer={2} largeScreen={2} widescreen={2} />
       </Grid.Row>
-
-      <Transition visible={!counting} animation='slide down'>
-      <Grid.Row>
-        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
-          <QiitaCardContainer/>
-        </Grid.Column>
-        <Grid.Column computer={8} largeScreen={8} tablet={16} widescreen={8} mobile={16}>
-          <AnalyzerCardContainer />
-        </Grid.Column>
-        <Grid.Column stretched/>
-      </Grid.Row>
-      </Transition>
     </Grid>
-  </Wrapper>
+
+    <Transition visible={!counting || breaking} animation='slide down'>
+      <span>
+        <ScrollList>
+          <Cell>
+            <QiitaCardContainer/>
+          </Cell>
+          <Cell>
+            <AnalyzerCardContainer/>
+          </Cell>
+        </ScrollList>
+      </span>
+    </Transition>
+  </div>
 )
 
 export default Board;

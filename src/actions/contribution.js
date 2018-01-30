@@ -1,9 +1,9 @@
 import Moment from 'moment';
 
-export function fetchContributions(name, start) {
+export function fetchContributions(name, start, token) {
   return async dispatch => {
     // コミット数をカウント
-    const events = await fetchJson(`https://api.github.com/users/${name}/events`);
+    const events = await fetchJson(`https://api.github.com/users/${name}/events?access_token=${token}`);
     const commits = getCommits(events, start);
     dispatch(receiveCommits(commits.length));
 

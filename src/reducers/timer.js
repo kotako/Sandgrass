@@ -11,7 +11,7 @@ const timer = (state = {}, action) => {
         ? { ...state, counting: true }
         : { ...state, counting: true, startedAt: action.now }
     case 'TIMER_ADJUSTED':
-      const times = [10, 600, 1500, 3000];
+      const times = [600, 1500, 3000];
       return { ...state, remain: times[(times.indexOf(state.remain)+1)%times.length] }
     case 'TIMER_FINISHED':
       return { ...state, counting: false, remain: 0, finishedAt: action.now, finishModalOpen: !state.breaking }
